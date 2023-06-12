@@ -1,5 +1,7 @@
 class Api::ReviewsController < ApplicationController
 
+    skip_before_action :authorize, only: [:index, :show]
+
     def index
         reviews = Review.all
         render json: reviews
@@ -12,15 +14,15 @@ class Api::ReviewsController < ApplicationController
 
     def create
         workspace = Workspace.find_by(id: params[:workspace_id])
-        review = workspace.reviews.create(params)
+        review = workspace.reviews.create!(review_params)
         render json: review 
     end
 
     def update
         review = Review.find_by(id: params[:id])
-    review.update(
-      comment: params[:comment]
-    )
+        review.update!(
+            review_params
+        )
         render json: review 
     end
 
@@ -28,6 +30,12 @@ class Api::ReviewsController < ApplicationController
         review = Review.find_by(id: params[:id])
         review.destroy
         render json: review 
+    end
+
+    private
+
+    def review_params
+    params.require(:review).permit(:rating, :comment, :workspace_id)
     end
 
 

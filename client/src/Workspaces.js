@@ -12,7 +12,6 @@ const Workspaces = () => {
   const [workspaces, setWorkspaces] = useState([])
   const [search, setSearch] = useState("")
   const [showAddForm, setShowAddForm] = useState(false)
-
   console.log(workspaces)
 
   useEffect(() => {
@@ -24,9 +23,9 @@ const Workspaces = () => {
       ))
   }, [])
 
-  const filterBySearch = workspaces.filter(c => c.title.toLowerCase().includes(search.toLowerCase()))
+  const filterBySearch = workspaces?.filter(c => c.title.toLowerCase().includes(search.toLowerCase()))
 
-  const workspaceCard = filterBySearch.map((w) => 
+  const workspaceCard = filterBySearch?.map((w) => 
     <WorkspaceCard 
       key={w.id}
       workspace={w}

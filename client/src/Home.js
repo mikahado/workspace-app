@@ -3,6 +3,7 @@ import React from 'react';
 const Home = () => {
 
     return (
+        <>
         <div className="App">
             <br />
             <h1>≡🬀 WORKSPACE🬀≡ </h1>
@@ -20,11 +21,11 @@ const Home = () => {
             <h3>≡🬀 WORKSPACE🬀≡</h3>
             <h4> <em>work &nbsp;from home <br /> away &nbsp; &nbsp;from home </em> </h4>
             <p>*</p>
-            <br />
-            <p>Have a WORKSPACE to suggest? </p>
-            <p>Contact us here. </p>
+
             <br /><br />
         </div>
+    
+        </>
     )
 }
 
