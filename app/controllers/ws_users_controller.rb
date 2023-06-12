@@ -1,0 +1,2 @@
+class WsUsersController < ApplicationController
+end

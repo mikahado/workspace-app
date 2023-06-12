@@ -4,10 +4,10 @@ one:
   rating: 1
   comment: MyText
   workspace: one
-  user: one
+  ws_user: one
 
 two:
   rating: 1
   comment: MyText
   workspace: two
-  user: two
+  ws_user: two
