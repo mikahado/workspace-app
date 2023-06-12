@@ -18,7 +18,7 @@ const Workspace = () => {
     const params = useParams()
 
     useEffect(() => {
-        fetch(`http://localhost:9292/workspaces/${params.id}`)
+        fetch(`/api/workspaces/${params.id}`)
         .then(r => r.json())
         .then(data => {
             setWorkspace(data)
@@ -26,7 +26,7 @@ const Workspace = () => {
     }, [])
 
     const handleDeleteReview = (id) => {
-    fetch(`http://localhost:9292/reviews/${id}`, {
+    fetch(`/api/reviews/${id}`, {
       method: "DELETE",
     })
       .then(() => onReviewDelete(id))
@@ -61,7 +61,7 @@ const Workspace = () => {
     //   setItems(updatedItems);
     // }
 
-    const reviewItems = workspace.reviews.map(w => 
+    const reviewItems = workspace?.reviews?.map(w => 
       <ReviewItem 
           key={w.id} 
           review={w} 
@@ -80,7 +80,7 @@ const Workspace = () => {
         <h1>REVIEWS</h1>
         <p>for</p>
         <h2>{workspace.title}</h2>
-        {workspace.address}
+        {workspace?.address}
         <br />
         <br />
         <br />
@@ -88,7 +88,7 @@ const Workspace = () => {
         <Button variant="outlined" onClick={handleShowReviewClick}>Write a Review</Button>
               <br />
 
-        {showReview ? <ReviewAdd key={workspace.id} onAddReview={handleAddReview} reviews={workspace.reviews} workspace_id={workspace.id} /> : null}
+        {showReview ? <ReviewAdd key={workspace.id} onAddReview={handleAddReview} reviews={workspace?.reviews} workspace_id={workspace.id} /> : null}
         <br />
         < hr />
 

@@ -16,7 +16,7 @@ const Workspaces = () => {
   console.log(workspaces)
 
   useEffect(() => {
-    fetch("http://localhost:9292/workspaces")
+    fetch("/api/workspaces")
     .then(r => r.json())
     .then((data => {
       setWorkspaces(data)

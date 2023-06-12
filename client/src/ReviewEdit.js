@@ -8,7 +8,7 @@ const ReviewEdit = ({onEditReview, id}) => {
   const handleEditSubmit = (e) => {
     e.preventDefault()
 
-    fetch(`http://localhost:9292/reviews/${id}`, {
+    fetch(`/api/reviews/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

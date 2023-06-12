@@ -27,7 +27,7 @@ const WorkspaceAdd = ({onAddWorkspace}) => {
             address: workspaceData.address
         }
 
-        fetch('http://localhost:9292/workspaces', {
+        fetch('/api/workspaces', {
             method: "POST",
             headers: {
             "Content-Type": "application/json",

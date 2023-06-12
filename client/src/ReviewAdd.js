@@ -20,7 +20,7 @@ const ReviewAdd = ({onAddReview, workspace_id}) => {
     workspace_id: review.workspace_id
   }
 
-  fetch('http://localhost:9292/reviews', {
+  fetch('/api/reviews', {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

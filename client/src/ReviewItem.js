@@ -10,6 +10,7 @@ const ReviewItem = ({review, onDeleteReview, onEditReview}) => {
   //   comment: ""
   // })
 
+  console.log(review)
   const {id, rating, comment} = review 
 
   const handleShowEditor = () => {

@@ -8,15 +8,15 @@ const WorkspaceCard = ({ workspace }) => {
 
     const {title, address, reviews, services} = workspace
      
-    const service = services.map(s => 
+    const service = services?.map(s => 
       <ServiceItem 
           key={s.id}
           service={s}
           />
         )
 
-    const allRatings = reviews.map(r => r.rating) 
-    const ratingsAvg = reviews.length ? allRatings.reduce((a,b) => a + b) / allRatings.length : null
+    const allRatings = reviews?.map(r => r.rating) 
+    const ratingsAvg = reviews?.length ? allRatings.reduce((a,b) => a + b) / allRatings?.length : null
 
   return (
     <div>
@@ -30,7 +30,7 @@ const WorkspaceCard = ({ workspace }) => {
           <br />
 
         <Link to={`/workspaces/${workspace.id}`}>
-          <Button >{allRatings.length} reviews</Button>
+          <Button >{allRatings?.length} reviews</Button>
         </Link>
         
     </div>
