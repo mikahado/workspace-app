@@ -20,17 +20,22 @@ const WorkspaceCard = ({ workspace }) => {
 
   return (
     <div>
-
+      <Link to={`/workspaces/${workspace.id}`}>
         <h2>{title}</h2>
-        [photo]<br /><br />
+        </Link>
+
+        <img className='locationImage' src={require('./img/upload-img-placeholder.png')} alt="location" />
+
+        <br/>
         {address}<br />
-        {service}<br />
+        {service}
+
+      <br/>
         
         <Rating name="read-only" value={Math.ceil(ratingsAvg)} readOnly />
           <br />
-
-        <Link to={`/workspaces/${workspace.id}`}>
-          <Button >{allRatings?.length} reviews</Button>
+          <Link to={`/workspaces/${workspace.id}`}>
+        <p>{allRatings?.length} reviews</p>
         </Link>
         
     </div>

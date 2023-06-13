@@ -4,6 +4,8 @@ import Home from './Home';
 import Workspace from './Workspace'
 import Workspaces from './Workspaces'
 import Navigation from './Navigation'
+import Login from './Login'
+import WorkspaceAdd from './WorkspaceAdd'
 import './App.css';
 
 function App() {
@@ -23,6 +25,16 @@ function App() {
           <Route path="/workspaces/:id" 
             element={<Workspace />} 
             />
+          <Route path="/workspaces/add" 
+          element={<WorkspaceAdd />} 
+          />
+          <Route path="/login" 
+            element={<Login />} 
+            />
+       
+
+
+
         </Routes>
      
 

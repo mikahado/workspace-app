@@ -18,18 +18,17 @@ function Navigation() {
 
       <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', '& > *': { m: 1, }, }} >
 
-        <ButtonGroup size="large" variant="contained" aria-label="contained button group">
+        <ButtonGroup size="large" variant="contained" >
          
             <NavLink
               to="/"
               end
             >
                <Button>
-              {<Diversity2RoundedIcon />}
+                {<Diversity2RoundedIcon />}. 
               </Button>
-            </NavLink>
-         
-        
+
+            </NavLink>        
             <NavLink
               to="/workspaces"
               end
@@ -41,11 +40,11 @@ function Navigation() {
  
 
             <NavLink
-                    to="/"
+                    to="/login"
                     end
                   >
                      <Button>
-                    {<InputIcon />}
+                    |{<InputIcon />}
                     </Button>
                   </NavLink>
 

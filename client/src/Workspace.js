@@ -50,17 +50,6 @@ const Workspace = () => {
       })
       setWorkspace({ ...workspace, reviews: updatedReviews });
     }
-
-    // function updateItem(newItem) {
-    //   const updatedItems = items.map(item => {
-    //     if (item.id === newItem.id) {
-    //       return newItem;
-    //     }
-    //     return item;
-    //   });
-    //   setItems(updatedItems);
-    // }
-
     const reviewItems = workspace?.reviews?.map(w => 
       <ReviewItem 
           key={w.id} 
@@ -77,14 +66,14 @@ const Workspace = () => {
 
     <div>
 
-        <h1>REVIEWS</h1>
-        <p>for</p>
-        <h2>{workspace.title}</h2>
+        <h1>≡🬀 {workspace.title} 🬀≡</h1>
         {workspace?.address}
+        <br /><br />
+            [map]
+        <br /><br />
+        [services]
         <br />
-        <br />
-        <br />
-        
+        <h2>Reviews</h2>
         <Button variant="outlined" onClick={handleShowReviewClick}>Write a Review</Button>
               <br />
 
