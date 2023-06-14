@@ -6,11 +6,19 @@ import Workspaces from './Workspaces'
 import Navigation from './Navigation'
 import Login from './Login'
 import WorkspaceAdd from './WorkspaceAdd'
+import MapMain from './MapMain'
+import MapMain2 from './MapMain2'
+import Map from './Map'
+import MapPlaces from './MapPlaces'
 import './App.css';
+
+
 
 function App() {
   
   return (
+    <>
+
     <div className="App">
  
     <Navigation />  
@@ -31,14 +39,21 @@ function App() {
           <Route path="/login" 
             element={<Login />} 
             />
-       
 
+          <Route path="/map" 
+            element={<MapMain />} 
+            />
 
+          <Route path="/map2" 
+            element={<MapMain2 />} 
+            />    
 
         </Routes>
+       </div>  
+
      
 
-  </div>  
+  </>
   );
 }
 

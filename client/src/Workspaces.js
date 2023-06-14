@@ -41,6 +41,7 @@ const Workspaces = () => {
     }
 
     const handleAddWorkspace = (newWorkspace) => {
+      console.log("DATAAAA", newWorkspace)
       setWorkspaces([...workspaces, newWorkspace]);
     }
    
