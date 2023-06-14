@@ -51,7 +51,6 @@ const ReviewAdd = ({onAddReview, workspace_id}) => {
         
         <br /><br />
 
-        <label>Rate</label>
         <div>          
           <label>1★<input type="radio" name="rating" value={1} onChange={handleChangeRating}/> &nbsp; </label>
           <label>2★<input type="radio" name="rating" value={2} onChange={handleChangeRating}/> &nbsp; </label>

@@ -6,7 +6,7 @@ import Button from '@mui/material/Button'
 
 const WorkspaceCard = ({ workspace }) => {
 
-    const {title, address, reviews, services} = workspace
+    const {title, address, reviews, services, lat, lng} = workspace
      
     const service = services?.map(s => 
       <ServiceItem 
@@ -24,7 +24,12 @@ const WorkspaceCard = ({ workspace }) => {
         <h2>{title}</h2>
         </Link>
 
-        <img className='locationImage' src={require('./img/upload-img-placeholder.png')} alt="location" />
+        {/* <img className='locationImage' src={require('./img/upload-img-placeholder.png')} alt="location" /> */}
+
+        <img className='locationImage' src={`https://maps.googleapis.com/maps/api/staticmap?center=${workspace?.lat},${workspace?.lng}&zoom=16&size=400x400&maptype=roadmap&markers=${workspace?.lat},${workspace?.lng}&key=AIzaSyB6iTD6vclUpZ-BnAazxNCQmddOFn_nphw`} alt="location"/>
+
+
+
 
         <br/>
         {address}<br />

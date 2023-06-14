@@ -43,8 +43,8 @@ const ReviewItem = ({review, onDeleteReview, onEditReview}) => {
           <br /><br />
 
         <div>
-          <DeleteOutlineOutlinedIcon onClick={handleDeleteClick} />
-          <ModeEditIcon onClick={handleShowEditor}/>
+          {/* <DeleteOutlineOutlinedIcon onClick={handleDeleteClick} />
+          <ModeEditIcon onClick={handleShowEditor}/> */}
 
           {showEditor 
             ? <ReviewEdit 

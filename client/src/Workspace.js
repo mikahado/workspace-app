@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import ReviewItem from './ReviewItem'
 import ReviewAdd from './ReviewAdd'
 import Button from '@mui/material/Button';
+import MapLocation from './MapLocation'
 
 const Workspace = () => {
 
@@ -50,6 +51,7 @@ const Workspace = () => {
       })
       setWorkspace({ ...workspace, reviews: updatedReviews });
     }
+
     const reviewItems = workspace?.reviews?.map(w => 
       <ReviewItem 
           key={w.id} 
@@ -69,7 +71,7 @@ const Workspace = () => {
         <h1>≡🬀 {workspace.title} 🬀≡</h1>
         {workspace?.address}
         <br /><br />
-            [map]
+            <MapLocation lat={workspace.lat} lng={workspace.lng}/>
         <br /><br />
         [services]
         <br />

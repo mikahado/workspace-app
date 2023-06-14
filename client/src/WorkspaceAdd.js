@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
-
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import MapMain2 from './MapMain2'
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate  } from "react-router-dom";
 
 const WorkspaceAdd = ({onAddWorkspace}) => {
 
+    const navigate = useNavigate();
     // const [workspaceData, setWorkspaceData] = useState({
     //     title: "",
     //     lat: "",
@@ -42,9 +42,15 @@ const WorkspaceAdd = ({onAddWorkspace}) => {
         })
             .then((r) => r.json())
             .then((data) => {
-            console.log("RETURN",data)
-            });
-    }
+              if (data.errors) {
+                alert(data.errors + ". . . Try again!")
+              }
+              else {
+              alert("Workspace Added!")
+              navigate(`/workspaces/${data.id}`)
+            }
+        })
+      }
 
   return (
     <>

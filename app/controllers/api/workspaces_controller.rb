@@ -1,6 +1,6 @@
 class Api::WorkspacesController < ApplicationController
 
-    skip_before_action :authorize, only: [:index, :show]
+    skip_before_action :authorize, only: [:index, :show, :create]
     
     def index  
         workspaces = Workspace.all
@@ -15,7 +15,8 @@ class Api::WorkspacesController < ApplicationController
     def create  
         new_workspace = Workspace.create!(
             title: params[:title], 
-            address: params[:address]
+            lat: params[:lat],
+            lng: params[:lng],
         )
         render json: new_workspace
     end

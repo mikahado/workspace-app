@@ -12,11 +12,11 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import { GoogleMapProvider, useGoogleMap, } from '@ubilabs/google-maps-react-hooks'
+
 
 import Button from '@mui/material/Button';
 
-/*global google*/
+// /*global google*/ 
 
 const mapOptions = {
   // Add your map options here
@@ -26,32 +26,40 @@ const mapOptions = {
 };
 
 
+
 const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
 
-  const [ selected, setSelected ] = useState({});
   const [currentPosition, setCurrentPosition ] = useState({});
   const [selectedPosition, setSelectedPosition] = useState(null);
 
+  const [data, setData] = useState({});
+  const [ selected, setSelected ] = useState({});
+
+  console.log('SEARCH DATA', data)
+  console.log('CLICK DATA', selectedPosition)
+
+
   const [location, setLocation] = useState({})
+
 
 
   const handleWorkspaceSubmit = () => {
 
     const workspace = {
+      title: "",
       lat: location.lat,
       lng: location.lng,
     }
-    console.log("hehehe")
     addWorkspace(workspace)
   }
 
   const getLocation = coords => {
    setLocation(coords);
     handleWorkspaceSubmit()
-    // Navigate to part 2 off adding a workspace
+
   };
 
-  const markerRef = useRef(null);
+  // const markerRef = useRef(null);
 
   const onSelect = item => {
     setSelected(item);
@@ -77,9 +85,9 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
   const footer = (
     <div className="footer">
       <div className="inner-footer">
-      <span className="location-text">Choose workspace and press</span>
+      <span className="location-text"></span>
       <Button variant="contained" onClick={() => getLocation(selectedPosition)}>
-        Next
+        Add
       </Button>
       </div>
     </div>
@@ -119,7 +127,7 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
       > */}
 
       <div className="places-container">
-        <PlacesAutocomplete setSelected={setCurrentPosition} />
+        <PlacesAutocomplete setSelected={setCurrentPosition} setData={setData} />
       </div>
 
         {isLoaded && <GoogleMap
@@ -128,6 +136,7 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
           draggable={true}
           zoom={18}
           center={currentPosition.lat ? currentPosition : mapOptions.center}
+          // onClick={(e) => setSelectedPosition(e.latLng?.toJSON())}
           onClick={(e) => setSelectedPosition(e.latLng?.toJSON())}
           // center={currentPosition.lat ? currentPosition : defaultCenter}
         >
@@ -177,7 +186,7 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
 
         </GoogleMap>
          }
-        {selected && <Marker position={currentPosition} />}
+        {/* {selected && <Marker position={currentPosition} />} */}
 
       {footer}
     </>
@@ -185,7 +194,8 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
 }
 
 
-const PlacesAutocomplete = ({ setSelected }) => {
+const PlacesAutocomplete = ({ setSelected, setData }) => {
+
   const {
     ready,
     value,
@@ -197,11 +207,12 @@ const PlacesAutocomplete = ({ setSelected }) => {
   const handleSelect = async (address) => {
     setValue(address, false)
     clearSuggestions()
-
     const results = await getGeocode({ address });
     const { lat, lng } = await getLatLng(results[0]);
     setSelected({ lat, lng })
+    setData({ address, lat, lng })
   };
+
 
   return (
     <Combobox onSelect={handleSelect}>
@@ -210,7 +221,7 @@ const PlacesAutocomplete = ({ setSelected }) => {
         onChange={(e) => setValue(e.target.value)}
         disabled={!ready}
         className="combobox-input"
-        placeholder="Search an address"
+        placeholder="Search"
       />
       <ComboboxPopover>
         <ComboboxList>

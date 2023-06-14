@@ -6,7 +6,6 @@ import WorkspaceGrid from './WorkspaceGrid'
 import WorkspaceAdd from './WorkspaceAdd'
 import { NavLink } from "react-router-dom";
 
-
 import Button from '@mui/material/Button';
 
 const Workspaces = () => {
@@ -24,7 +23,9 @@ const Workspaces = () => {
       ))
   }, [])
 
-  const filterBySearch = workspaces?.filter(c => c.title.toLowerCase().includes(search.toLowerCase()))
+  // const filterBySearch = workspaces?.filter(c => c.title?.toLowerCase().includes(search.toLowerCase()))
+
+  const filterBySearch = workspaces?.filter(c => c.title?.toLowerCase().includes(search.toLowerCase()))
 
   const workspaceCard = filterBySearch?.map((w) => 
     <WorkspaceCard 
