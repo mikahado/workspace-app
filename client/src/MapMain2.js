@@ -34,8 +34,6 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
 
   const [toggle, setToggle ] = useState(false)
 
-  console.log('SEARCH DATA', data)
-  console.log('CLICK DATA', selectedPosition)
 
   const handleToggleMap = () => {
     setToggle(!toggle)
@@ -109,9 +107,9 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
     }
   }
 
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(success);
-  }, [])
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(success);
+  // }, [])
 
   const [ libraries ] = useState(['places']);
 

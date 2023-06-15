@@ -53,6 +53,13 @@ const ServiceAdd = ({ service, id, toggle }) => {
             console.log(data)
             toggle()
             setErrors([]);
+
+            setServices({
+              workspace_id: id,
+              category: "",
+              description: ""
+            });
+
           }
         });
   }
