@@ -54,7 +54,7 @@ const Workspaces = () => {
         <h3>-New York City-</h3>
         <br />        
         <Search handleSearchChange={handleSearchChange} />
-            <NavLink to="/workspaces/add" end>
+            <NavLink to="/api/workspaces/add" end>
                <Button variant="outlined" >Add a Workspace</Button>
             </NavLink>
        

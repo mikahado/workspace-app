@@ -43,7 +43,7 @@ const WorkspaceAdd = ({onAddWorkspace}) => {
               }
               else {
               alert("Workspace Added!")
-              navigate(`/workspaces/${data.id}`)
+              navigate(`/api/workspaces/${data.id}`)
             }
         })
       }
@@ -53,7 +53,7 @@ const WorkspaceAdd = ({onAddWorkspace}) => {
     <div>
         <br/>
             <NavLink
-              to="/workspaces"
+              to="/api/workspaces"
               end
             >
                <Button>

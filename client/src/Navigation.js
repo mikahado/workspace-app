@@ -30,7 +30,7 @@ function Navigation() {
 
             </NavLink>        
             <NavLink
-              to="/workspaces"
+              to="/api/workspaces"
               end
             >
                 <Button>
@@ -40,7 +40,7 @@ function Navigation() {
  
 
             <NavLink
-                    to="/login"
+                    to="/api/login"
                     end
                   >
                      <Button>
