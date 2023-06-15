@@ -27,24 +27,24 @@ function App() {
           <Route exact path="/" 
             element={<Home />} 
             /> 
-          <Route exact path="/workspaces" 
+          <Route exact path="/api/workspaces" 
             element={<Workspaces />} 
             /> 
-          <Route path="/workspaces/:id" 
+          <Route path="/api/workspaces/:id" 
             element={<Workspace />} 
             />
-          <Route path="/workspaces/add" 
+          <Route path="/api/workspaces/add" 
           element={<WorkspaceAdd />} 
           />
-          <Route path="/login" 
+          <Route path="/api/login" 
             element={<Login />} 
             />
 
-          <Route path="/workspaces/servicesadd" 
+          <Route path="/api/workspaces/servicesadd" 
             element={<ServicesAdd />} 
             />
 
-          <Route path="/map2" 
+          <Route path="/api/map2" 
             element={<MapMain2 />} 
             />    
 
