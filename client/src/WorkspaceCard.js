@@ -6,8 +6,11 @@ import Button from '@mui/material/Button'
 
 const WorkspaceCard = ({ workspace }) => {
 
-    const {title, address, reviews, services, lat, lng} = workspace
+    const {address, reviews, services} = workspace
      
+    const title = workspace.title.split(",")[0]
+
+
     const service = services?.map(s => 
       <ServiceItem 
           key={s.id}
@@ -32,7 +35,7 @@ const WorkspaceCard = ({ workspace }) => {
 
 
         <br/>
-        {address}<br />
+        {/* {address}<br /> */}
         {service}
 
       <br/>

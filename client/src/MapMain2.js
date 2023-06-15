@@ -19,13 +19,10 @@ import Button from '@mui/material/Button';
 // /*global google*/ 
 
 const mapOptions = {
-  // Add your map options here
-  // `center` and `zoom` are required for every map to be displayed
+
   center: {lat: 50, lng: 0},
   zoom: 1
 };
-
-
 
 const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
 
@@ -35,20 +32,23 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
   const [data, setData] = useState({});
   const [ selected, setSelected ] = useState({});
 
+  const [toggle, setToggle ] = useState(false)
+
   console.log('SEARCH DATA', data)
   console.log('CLICK DATA', selectedPosition)
 
+  const handleToggleMap = () => {
+    setToggle(!toggle)
+  }
 
   const [location, setLocation] = useState({})
-
-
 
   const handleWorkspaceSubmit = () => {
 
     const workspace = {
-      title: "",
-      lat: location.lat,
-      lng: location.lng,
+      title: data.address,
+      lat: data.lat,
+      lng: data.lng,
     }
     addWorkspace(workspace)
   }
@@ -113,9 +113,12 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
     navigator.geolocation.getCurrentPosition(success);
   }, [])
 
+  const [ libraries ] = useState(['places']);
+
   const { isLoaded } = useJsApiLoader({
+    
     googleMapsApiKey: "AIzaSyB6iTD6vclUpZ-BnAazxNCQmddOFn_nphw",
-    libraries: ["places"],
+    libraries: ["places"]
   });
 
      return (
@@ -127,10 +130,11 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
       > */}
 
       <div className="places-container">
-        <PlacesAutocomplete setSelected={setCurrentPosition} setData={setData} />
+        <PlacesAutocomplete setSelected={setCurrentPosition} setData={setData} setToggleMap={handleToggleMap}  />
       </div>
-
-        {isLoaded && <GoogleMap
+      
+      {toggle ? 
+        isLoaded && <GoogleMap
           id='workspace-map'
           mapContainerStyle={mapStyles()}
           draggable={true}
@@ -140,61 +144,20 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
           onClick={(e) => setSelectedPosition(e.latLng?.toJSON())}
           // center={currentPosition.lat ? currentPosition : defaultCenter}
         >
-       
-
-          {/* <Marker
-            position={selectedPosition}
-            ref={() => markerRef}
-            onDragEnd={onMarkerDragEnd}
-            draggable={true} /> */}
-          {/* {
-            workspaces ?
-            workspaces.map(item => {
-              return (
-              <Marker 
-              key={item.id}
-              position={item.location}
-              onClick={() => onSelect(item)}
-              />
-              )
-            }) : null
-          } */}
-
-          {
-            // isAdding ? 
-            //  :
-            // null
-          }
-
-          {
-            // selected.location ?
-            // (
-            //   <InfoWindow
-            //   position={selected.location}
-            //   onCloseClick={() => setSelected({})}
-            // >
-            //   <div className="infowindow">
-            //     {/* <p>{selected.title}</p>
-            //     <img src={selected.image} className="small-image" alt="rental"/>
-            //     <p>price: {selected.price}</p>
-            //     <p>sqm2: {selected.sqm}</p>
-            //     <p>bedrooms: {selected.bedrooms}</p> */}
-            //   </div>
-            // </InfoWindow>
-            // ) : null
-          }
+        {footer}
 
         </GoogleMap>
-         }
-        {/* {selected && <Marker position={currentPosition} />} */}
+         :
+         null
+        }
 
-      {footer}
+     
     </>
      )
 }
 
 
-const PlacesAutocomplete = ({ setSelected, setData }) => {
+const PlacesAutocomplete = ({ setSelected, setData, setToggleMap }) => {
 
   const {
     ready,
@@ -211,6 +174,7 @@ const PlacesAutocomplete = ({ setSelected, setData }) => {
     const { lat, lng } = await getLatLng(results[0]);
     setSelected({ lat, lng })
     setData({ address, lat, lng })
+    setToggleMap()
   };
 
 

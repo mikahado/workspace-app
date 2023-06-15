@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import PlacesAutocomplete from './PlacesAutocomplete';
 import Button from '@mui/material/Button';
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import MapMain2 from './MapMain2'
 import { NavLink, useNavigate  } from "react-router-dom";
 
 const WorkspaceAdd = ({onAddWorkspace}) => {
+
+  const [data, setData] = useState({});
+  const [ selected, setSelected ] = useState({});
 
     const navigate = useNavigate();
     // const [workspaceData, setWorkspaceData] = useState({
@@ -24,14 +28,6 @@ const WorkspaceAdd = ({onAddWorkspace}) => {
     // }
 
     const handleAddSubmit = (newWorkspace) => {
-
-            console.log("DATA", newWorkspace)
-
-        // const newWorkspace = {
-        //     title: workspaceData.title,
-        //     lat: workspaceData.lat,
-        //     lng: workspaceData.lng,
-        // }
 
         fetch('/api/workspaces', {
             method: "POST",
@@ -64,9 +60,9 @@ const WorkspaceAdd = ({onAddWorkspace}) => {
               {<KeyboardBackspaceIcon />}
               </Button>
             </NavLink>
-    <h3><em>Add a Workspace</em></h3>
+    <h3>Search the name or address of the workspace</h3>
    
-    <MapMain2 addWorkspace={handleAddSubmit} />
+    <MapMain2 addWorkspace={handleAddSubmit} data={data} selected={selected} />
     
 
       

@@ -5,11 +5,6 @@ import Button from '@mui/material/Button';
 
 // /*global google*/ 
 
-const mapOptions = {
-  center: {lat: 50, lng: 0},
-  zoom: 1
-};
-
 
 const MapLocation = ({ workspaces, lat, lng }) => {
 
@@ -58,7 +53,7 @@ const MapLocation = ({ workspaces, lat, lng }) => {
           id='workspace-map'
           mapContainerStyle={mapStyles()}
           draggable={true}
-          zoom={18}
+          zoom={20}
           center={{lat, lng}}
         >
 

@@ -9,11 +9,10 @@ import WorkspaceAdd from './WorkspaceAdd'
 import MapMain from './MapMain'
 import MapMain2 from './MapMain2'
 import Map from './Map'
+import ServicesAdd from './ServicesAdd'
 import MapLocation from './MapLocation'
 import './App.css';
 /*global google*/
-
-
 
 function App() {
   
@@ -41,9 +40,9 @@ function App() {
             element={<Login />} 
             />
 
-          {/* <Route path="/map" 
-            element={<MapMain />} 
-            /> */}
+          <Route path="/workspaces/servicesadd" 
+            element={<ServicesAdd />} 
+            />
 
           <Route path="/map2" 
             element={<MapMain2 />} 

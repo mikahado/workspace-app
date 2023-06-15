@@ -1,92 +1,143 @@
-import React, {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom'
-import ReviewItem from './ReviewItem'
-import ReviewAdd from './ReviewAdd'
-import Button from '@mui/material/Button';
-import MapLocation from './MapLocation'
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import ReviewItem from "./ReviewItem";
+import ReviewAdd from "./ReviewAdd";
+import Button from "@mui/material/Button";
+import MapLocation from "./MapLocation";
+import ServicesAdd from "./ServicesAdd";
 
 const Workspace = () => {
+  const [workspace, setWorkspace] = useState({
+    reviews: [],
+    services: [],
+  });
 
-    const [workspace, setWorkspace] = useState({
-      reviews: [],
-      services: []
-    })
+  const title = workspace?.title?.split(",")[0];
 
-    // console.log(workspace)
+  const [showReview, setShowReview] = useState(false);
+  const [showInfoForm, setShowInfoForm] = useState(false);
 
-    const [showReview, setShowReview] = useState(false)
+  const params = useParams();
 
-    const params = useParams()
+  useEffect(() => {
+    fetch(`/api/workspaces/${params.id}`)
+      .then((r) => r.json())
+      .then((data) => {
+        setWorkspace(data);
+      });
+  }, []);
 
-    useEffect(() => {
-        fetch(`/api/workspaces/${params.id}`)
-        .then(r => r.json())
-        .then(data => {
-            setWorkspace(data)
-        })
-    }, [])
-
-    const handleDeleteReview = (id) => {
+  const handleDeleteReview = (id) => {
     fetch(`/api/reviews/${id}`, {
       method: "DELETE",
-    })
-      .then(() => onReviewDelete(id))
-    }
+    }).then(() => onReviewDelete(id));
+  };
 
-    const onReviewDelete = (id) => {
-      const updatedReviews = workspace.reviews.filter((w) => w.id !== id)
-      setWorkspace({...workspace, reviews: updatedReviews});
-    }
+  const onReviewDelete = (id) => {
+    const updatedReviews = workspace.reviews.filter((w) => w.id !== id);
+    setWorkspace({ ...workspace, reviews: updatedReviews });
+  };
 
-    const handleAddReview = (newReview) => {
-    setWorkspace({...workspace, reviews: [...workspace.reviews, newReview]})
-    }
+  const handleAddReview = (newReview) => {
+    setWorkspace({ ...workspace, reviews: [...workspace.reviews, newReview] });
+  };
 
-    const handleEditReview = (editedReview) => {
-       const updatedReviews = workspace.reviews.map((review) => {
-        if (review.id === editedReview.id) {
-          return editedReview;
-        }
-        return review
-      })
-      setWorkspace({ ...workspace, reviews: updatedReviews });
-    }
-
-    const reviewItems = workspace?.reviews?.map(w => 
-      <ReviewItem 
-          key={w.id} 
-          review={w} 
-          onDeleteReview={handleDeleteReview} 
-          onEditReview={handleEditReview} 
-          workspace_id={workspace.id} /> )
-
-    const handleShowReviewClick = () => {
-        setShowReview(!showReview)
+  const handleEditReview = (editedReview) => {
+    const updatedReviews = workspace.reviews.map((review) => {
+      if (review.id === editedReview.id) {
+        return editedReview;
       }
+      return review;
+    });
+    setWorkspace({ ...workspace, reviews: updatedReviews });
+  };
 
-  return (
+  const reviewItems = workspace?.reviews?.map((w) => (
+    <ReviewItem
+      key={w.id}
+      review={w}
+      onDeleteReview={handleDeleteReview}
+      onEditReview={handleEditReview}
+      workspace_id={workspace.id}
+    />
+  ))
 
-    <div>
+  const handleShowReviewClick = () => {
+    setShowReview(!showReview);
+  }
 
-        <h1>≡🬀 {workspace.title} 🬀≡</h1>
-        {workspace?.address}
-        <br /><br />
-            <MapLocation lat={workspace.lat} lng={workspace.lng}/>
-        <br /><br />
+  const handleInfoToggleClick = () => {
+    setShowInfoForm(!showInfoForm);
+  }
+
+
+  if (workspace.services.length === 0) {
+    return (
+      <div>
+        <h1>≡🬀 {title} 🬀≡</h1>
+        <br />
+        <p>This workspace needs details!</p>
+        <Button variant="outlined" onClick={handleInfoToggleClick}>
+          Add Info
+        </Button>
+        {showInfoForm ? (
+          <ServicesAdd id={workspace.id} toggle={handleInfoToggleClick} />
+        ) : null}
+        <br />
+        <br />
+        <MapLocation lat={workspace?.lat} lng={workspace?.lng} />
+        <br />
+        <br />
         [services]
         <br />
         <h2>Reviews</h2>
-        <Button variant="outlined" onClick={handleShowReviewClick}>Write a Review</Button>
-              <br />
-
-        {showReview ? <ReviewAdd key={workspace.id} onAddReview={handleAddReview} reviews={workspace?.reviews} workspace_id={workspace.id} /> : null}
+        <Button variant="outlined" onClick={handleShowReviewClick}>
+          Write a Review
+        </Button>
         <br />
-        < hr />
-
+        {showReview ? (
+          <ReviewAdd
+            key={workspace.id}
+            onAddReview={handleAddReview}
+            reviews={workspace?.reviews}
+            workspace_id={workspace.id}
+          />
+        ) : null}
+        <br />
+        <hr />
         {reviewItems}
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <h1>≡🬀 {title} 🬀≡</h1>
+        <br/>
+        <h3>{workspace?.services[0]?.category}</h3>
+        <br />
+        <p>Description: {workspace?.services[0]?.description}</p>
+        <br/>
+        <MapLocation lat={workspace?.lat} lng={workspace?.lng} />
+        <br />
+        <h2>Reviews</h2>
+        <Button variant="outlined" onClick={handleShowReviewClick}>
+          Write a Review
+        </Button>
+        <br />
+        {showReview ? (
+          <ReviewAdd
+            key={workspace.id}
+            onAddReview={handleAddReview}
+            reviews={workspace?.reviews}
+            workspace_id={workspace.id}
+          />
+        ) : null}
+        <br />
+        <hr />
+        {reviewItems}
+      </div>
+    );
+  }
+};
 
-    </div>
-  )
-}
-
-export default Workspace
+export default Workspace;
