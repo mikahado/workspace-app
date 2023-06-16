@@ -140,9 +140,7 @@ const Workspace = () => {
         <br />
         <p>Description: {workspace?.services[0]?.description}</p>
         <br/>
-        <Button onClick={handleWorkspaceDeleteClick} variant="outlined" color="error">
-        Delete Workspace
-      </Button>
+
         <MapLocation lat={workspace?.lat} lng={workspace?.lng} />
         <br />
         <h2>Reviews</h2>
@@ -160,8 +158,14 @@ const Workspace = () => {
         ) : null}
         <br />
         <hr />
+        <br />
         {reviewItems}
-
+        <br />
+        <hr/>
+        <br/>
+        <Button onClick={handleWorkspaceDeleteClick} variant="outlined" color="error">
+        Delete Workspace
+      </Button>
       </div>
     );
   }
