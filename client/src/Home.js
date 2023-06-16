@@ -10,9 +10,9 @@ const Home = () => {
             <h1>≡🬀 WORKSPACE 🬀≡ </h1>
             <h3><em>-New York City-</em></h3>
             <br />
-            <p>WORKSPACE helps you find the best spaces in NYC to do your work.</p>
-            <p>Workspace is a curated database of free spots in the city </p>
-            <p>where you can set up a laptop and headphones </p>
+            <p>WORKSPACE <br/>helps you find the best spaces <br/>in NYC to do your work.</p>
+            <p>Workspace <br/> is a map and database <br/> of free spots in the city </p>
+            <p>where you can set up <br/> a laptop and headphones </p>
             <p>or a notebook and pen </p>
             <p>and get </p>
             <p>to</p>
@@ -20,9 +20,13 @@ const Home = () => {
             <br />
             <p>*</p>
             <h3>≡🬀 WORKSPACE🬀≡</h3>
-            <h4> <em>work &nbsp;from home <br /> away &nbsp; &nbsp;from home </em> </h4>
+            <h4> <em>work from home <br /> away from home </em> </h4>
             <p>*</p>
 
+            <br />
+            <a href="mailto:maikaharrell@gmail.com">contact</a>
+            <br/>
+            <small>©MKDO</small>
             <br /><br />
         </div>
     

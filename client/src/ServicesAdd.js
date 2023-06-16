@@ -7,14 +7,13 @@ import FormControl from "@mui/material/FormControl";
 import Button from '@mui/material/Button';
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-const ServiceAdd = ({ service, id, toggle }) => {
+const ServiceAdd = ({ service, id, toggle, setWorkspace }) => {
 
     const [services, setServices] = useState({
         workspace_id: id,
         category: "",
         description: ""
         });  
-
 
 
     const [errors, setErrors] = useState([])
@@ -26,22 +25,12 @@ const ServiceAdd = ({ service, id, toggle }) => {
 
   const addServices = () => {
 
-    const servicesRequest = {
-        service: {
-        workspace_id: services.workspace_id,
-        category: services.category,
-        description: services.description
-        }
-    };
-    
-   
-
     fetch(`/api/services`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(servicesRequest),
+        body: JSON.stringify(services),
       })
         .then((resp) => resp.json())
         .then((data) => {
@@ -50,16 +39,13 @@ const ServiceAdd = ({ service, id, toggle }) => {
             setErrors(errorsLis);
             console.log(data.errors)
           } else {
-            console.log(data)
+            // data is structured like this: {id: 97, category: 'Cafe', wifi: null, description: 'haha', workspace_id: 139, …}
             toggle()
             setErrors([]);
-
-            setServices({
-              workspace_id: id,
-              category: "",
-              description: ""
-            });
-
+            setWorkspace((prevWorkspace) => ({
+              ...prevWorkspace,
+              services: [...prevWorkspace.services, data],
+            }));
           }
         });
   }

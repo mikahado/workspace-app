@@ -5,12 +5,14 @@ import ReviewAdd from "./ReviewAdd";
 import Button from "@mui/material/Button";
 import MapLocation from "./MapLocation";
 import ServicesAdd from "./ServicesAdd";
+import { useNavigate  } from "react-router-dom";
 
 const Workspace = () => {
   const [workspace, setWorkspace] = useState({
     reviews: [],
     services: [],
   });
+  const navigate = useNavigate();
 
   const title = workspace?.title?.split(",")[0];
 
@@ -70,6 +72,27 @@ const Workspace = () => {
     setShowInfoForm(!showInfoForm);
   }
 
+  const handleWorkspaceDeleteClick = () => {
+    handleDeleteWorkspace(workspace.id);
+  }
+
+  const handleDeleteWorkspace = (id) => {
+    console.log(id)
+    fetch(`/api/workspaces/${id}`, {
+      method: "DELETE",
+    })
+      .then(() => onWorkspaceDelete(id))
+      .catch((error) => {
+        console.log("Error deleting workspace!!", error);
+      });
+      navigate('/workspaces')
+      alert(`You have deleted the workspace!`)
+  };
+
+  const onWorkspaceDelete = (id) => {
+    setWorkspace({});   
+  }
+
 
   if (workspace.services.length === 0) {
     return (
@@ -81,7 +104,7 @@ const Workspace = () => {
           Add Info
         </Button>
         {showInfoForm ? (
-          <ServicesAdd id={workspace.id} toggle={handleInfoToggleClick} />
+          <ServicesAdd id={workspace.id} toggle={handleInfoToggleClick} setWorkspace={setWorkspace} />
         ) : null}
         <br />
         <br />
@@ -135,6 +158,9 @@ const Workspace = () => {
         <br />
         <hr />
         {reviewItems}
+        <Button onClick={handleWorkspaceDeleteClick} variant="outlined" color="error">
+        Delete Workspace
+      </Button>
       </div>
     );
   }
