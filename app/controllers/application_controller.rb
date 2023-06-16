@@ -21,8 +21,8 @@ class ApplicationController < ActionController::API
       render json: { error: "Not found" }, status: :not_found
     end
 
-    def fallback_index_html
-      render :file => 'public/index.html'
-    end
+    # def fallback_index_html
+    #   render :file => 'public/index.html'
+    # end
   
   end
