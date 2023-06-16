@@ -116,7 +116,7 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
   const { isLoaded } = useJsApiLoader({
     
     googleMapsApiKey: "AIzaSyB6iTD6vclUpZ-BnAazxNCQmddOFn_nphw",
-    libraries: ["places"]
+    libraries
   });
 
      return (
