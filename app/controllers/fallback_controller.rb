@@ -1,4 +1,4 @@
-class Api::FallbackController < ApplicationController
+class FallbackController < ApplicationController
     def index
         render file: 'public/index.html'
     end
