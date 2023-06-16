@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-const ReviewAdd = ({onAddReview, workspace_id, scrollToBottom}) => {
+const ReviewAdd = ({onAddReview, workspace_id, scrollToBottom, showReview}) => {
   
   console.log(scrollToBottom)
 
@@ -36,6 +36,7 @@ const ReviewAdd = ({onAddReview, workspace_id, scrollToBottom}) => {
 
     onAddReview(newData);
     scrollToBottom()
+    showReview()
     })
   }
 

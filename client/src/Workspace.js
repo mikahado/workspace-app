@@ -134,6 +134,7 @@ const Workspace = () => {
             reviews={workspace?.reviews}
             workspace_id={workspace.id}
             scrollToBottom={scrollToBottom}
+            showReview={handleShowReviewClick}
           />
         ) : null}
         <br />
@@ -169,6 +170,7 @@ const Workspace = () => {
             reviews={workspace?.reviews}
             workspace_id={workspace.id}
             scrollToBottom={scrollToBottom}
+            showReview={handleShowReviewClick}
           />
         ) : null}
         <br />
