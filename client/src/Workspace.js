@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import ReviewItem from "./ReviewItem";
 import ReviewAdd from "./ReviewAdd";
@@ -17,7 +17,15 @@ const Workspace = () => {
   const title = workspace?.title?.split(",")[0];
 
   const [showReview, setShowReview] = useState(false);
+
   const [showInfoForm, setShowInfoForm] = useState(false);
+
+  const bottomReview = useRef(null)
+
+  const scrollToBottom = () => {
+    bottomReview.current.scrollIntoView({ behavior: 'smooth' });
+  };
+  
 
   const params = useParams();
 
@@ -61,6 +69,7 @@ const Workspace = () => {
       onDeleteReview={handleDeleteReview}
       onEditReview={handleEditReview}
       workspace_id={workspace.id}
+      scrollToBottom={scrollToBottom}
     />
   ))
 
@@ -124,11 +133,16 @@ const Workspace = () => {
             onAddReview={handleAddReview}
             reviews={workspace?.reviews}
             workspace_id={workspace.id}
+            scrollToBottom={scrollToBottom}
           />
         ) : null}
         <br />
         <hr />
         {reviewItems}
+        <Button onClick={handleWorkspaceDeleteClick} variant="outlined" color="error">
+        Delete Workspace
+      </Button>
+        <div ref={bottomReview}></div>
       </div>
     );
   } else {
@@ -154,6 +168,7 @@ const Workspace = () => {
             onAddReview={handleAddReview}
             reviews={workspace?.reviews}
             workspace_id={workspace.id}
+            scrollToBottom={scrollToBottom}
           />
         ) : null}
         <br />
@@ -166,6 +181,8 @@ const Workspace = () => {
         <Button onClick={handleWorkspaceDeleteClick} variant="outlined" color="error">
         Delete Workspace
       </Button>
+      <br/> <br/> <br/> <br/>
+      <div ref={bottomReview}></div>
       </div>
     );
   }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import ReviewEdit from './ReviewEdit'
@@ -11,6 +11,8 @@ const ReviewItem = ({review, onDeleteReview, onEditReview}) => {
   // })
 
   console.log(review)
+
+
   const {id, rating, comment} = review 
 
   const handleShowEditor = () => {
@@ -31,20 +33,26 @@ const ReviewItem = ({review, onDeleteReview, onEditReview}) => {
   //   .then(r => r.json())
   //   .then(editedReview => (onEditReview(editedReview)))
   // }
+
+  const stars = Array.from({ length: rating }, (_, index) => (
+    <span key={index} role="img" aria-label="star">
+      ⭐
+    </span>
+  ));
  
   return (
 
     <div>
       <hr />
-          <p> <b>User_{Math.floor(Math.random() * 100)}</b> : </p>
+      <br/><br/>
+          {/* <p> <b>User_{Math.floor(Math.random() * 100)}</b> : </p> */}
+          {stars} 
+          <br /><br />
           {comment}
           <br /><br />
-          {rating} stars
-          <br /><br />
-
         <div>
-          <DeleteOutlineOutlinedIcon onClick={handleDeleteClick} />
-          <ModeEditIcon onClick={handleShowEditor}/>
+          {/* <DeleteOutlineOutlinedIcon onClick={handleDeleteClick} />
+          <ModeEditIcon onClick={handleShowEditor}/> */}
 
           {showEditor 
             ? <ReviewEdit 

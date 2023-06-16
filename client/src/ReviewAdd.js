@@ -3,9 +3,12 @@ import React, { useState } from 'react'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-const ReviewAdd = ({onAddReview, workspace_id}) => {
+const ReviewAdd = ({onAddReview, workspace_id, scrollToBottom}) => {
   
+  console.log(scrollToBottom)
+
   const [review, setReview] = useState({
+    ws_user_id: 1,
     rating: 3,
     comment: "",
     workspace_id: workspace_id
@@ -15,6 +18,7 @@ const ReviewAdd = ({onAddReview, workspace_id}) => {
     e.preventDefault()
 
   const newReview = {
+    ws_user_id: 1,
     rating: review.rating,
     comment: review.comment,
     workspace_id: review.workspace_id
@@ -31,6 +35,7 @@ const ReviewAdd = ({onAddReview, workspace_id}) => {
     .then((newData) => {
 
     onAddReview(newData);
+    scrollToBottom()
     })
   }
 
