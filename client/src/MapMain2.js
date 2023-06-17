@@ -24,7 +24,8 @@ import Button from "@mui/material/Button";
 
 const mapOptions = {
   center: { lat: 40.7420, lng: -73.9073 },
-  zoom: 11
+  zoom: 11,
+  disableDefaultUI: true,
 };
 
 const containerStyle = {
@@ -42,14 +43,14 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
   const [data, setData] = useState({});
   const [selected, setSelected] = useState({});
 
-  // const [toggle, setToggle] = useState(false);
+  const [toggle, setToggle] = useState(false);
   // const [toggleButton, setToggleButton] = useState(false)
 
 
 
-  // const handleToggleMap = () => {
-  //   setToggle(!toggle);
-  // };
+  const handleToggle = () => {
+    setToggle(true);
+  };
 
   // const handleToggleButton = () => {
   //   setToggleButton(!toggleButton);
@@ -99,17 +100,13 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
   // };
 
   const footer = (
-    <div className="footer">
-      <div className="inner-footer">
-        <span className="location-text"></span>
-        <Button
-          variant="contained"
-          onClick={() => getLocation(selectedPosition)}
-        >
-          Add
-        </Button>
-      </div>
+    <>
+    <div>
+      <br/>
+    {toggle ? <button className="workspace-lookup" onClick={() => getLocation(selectedPosition)}><h3>Add {data?.address?.split(',')[0]}</h3></button> : null}
     </div>
+    </>
+
   );
 
   // const mapStyles = () => {
@@ -141,31 +138,28 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
 
   return (
     <>
-      {/* <LoadScript
-        id="script-loader"
-        googleMapsApiKey="AIzaSyB6iTD6vclUpZ-BnAazxNCQmddOFn_nphw"
-      > */}
-
       <div className="places-container">
         <PlacesAutocomplete
           setSelected={setCurrentPosition}
           setData={setData}
-          // setToggleMap={handleToggleMap}
+          setToggle={handleToggle}
           // handleToggleButton={handleToggleButton}
           handleZoomMap={handleZoomMap}
         />
       </div>
+      <br/>
+      <h2>≡ {data?.address?.split(',')[0]} ≡</h2>
 
       {isLoaded && (
             <GoogleMap
               id="workspace-map"
               mapContainerStyle={containerStyle}
-              draggable={true}
+              draggable={false}
               zoom={zoomMap}
+              disableDefaultUI={mapOptions.disableDefaultUI}
               center={currentPosition}
               // onClick={(e) => setSelectedPosition(e.latLng?.toJSON())}
-              onClick={(e) => setSelectedPosition(e.latLng?.toJSON())}
-              // center={currentPosition.lat ? currentPosition : defaultCenter}
+
             >
 
                 {zoomMap === 18 ?
@@ -177,8 +171,6 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
                     null
                 }
 
-
-
             </GoogleMap>
           )            
 }
@@ -187,7 +179,7 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
   );
 };
 
-const PlacesAutocomplete = ({ setSelected, setData,handleToggleButton, handleZoomMap }) => {
+const PlacesAutocomplete = ({ setSelected, setData, handleToggleButton, setToggle, handleZoomMap }) => {
   const {
     ready,
     value,
@@ -203,21 +195,20 @@ const PlacesAutocomplete = ({ setSelected, setData,handleToggleButton, handleZoo
     const { lat, lng } = await getLatLng(results[0]);
     setSelected({ lat, lng });
     setData({ address, lat, lng });
-    // setToggleMap();
-    // handleToggleButton()
+    setValue("")
     handleZoomMap(18)
+    setToggle()
   };
 
   const handleClear = () => {
     setValue("")
     handleZoomMap(11)
-    // handleToggleButton()
-    // setToggleMap()
+
 }
 
   return (
     <>
-    <br/><br/><br/>
+    <br/>
     <Combobox onSelect={handleSelect}>
       <ComboboxInput
         value={value}
@@ -234,7 +225,6 @@ const PlacesAutocomplete = ({ setSelected, setData,handleToggleButton, handleZoo
             ))}
         </ComboboxList>
       </ComboboxPopover>
-      <button onClick={handleClear}>Clear</button>
     </Combobox>
 
     </>

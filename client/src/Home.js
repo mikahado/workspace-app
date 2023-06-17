@@ -7,7 +7,7 @@ const Home = () => {
         <>
         <div className="App">
             <br />
-            <h1>≡🬀 WORKSPACE 🬀≡ </h1>
+            <h1>≡WORKSPACE≡ </h1>
             <h3><em>-New York City-</em></h3>
             <br />
             <p>WORKSPACE <br/>helps you find the best spaces <br/>in NYC to do your work.</p>

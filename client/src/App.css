@@ -54,9 +54,16 @@
   padding: 0.5rem;
 }
 
-
-
-
+.workspace-lookup {
+  border-radius: 25px;
+  display: inline-block;
+  background: white;
+  border: 2px solid #0a0a0a;
+  width: 50%;
+  padding: 0.5rem;
+  text-align: center;
+  box-shadow: 10px 10px;
+}
 
 
 .info-window {

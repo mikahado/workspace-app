@@ -12,22 +12,18 @@ const Workspace = () => {
     reviews: [],
     services: [],
   });
-  const navigate = useNavigate();
-
-  const title = workspace?.title?.split(",")[0];
-
-  const [showReview, setShowReview] = useState(false);
-
-  const [showInfoForm, setShowInfoForm] = useState(false);
-
+  const navigate = useNavigate()
+  const title = workspace?.title?.split(",")[0]
+  const [showReview, setShowReview] = useState(false)
+  const [showInfoForm, setShowInfoForm] = useState(false)
   const bottomReview = useRef(null)
 
   const scrollToBottom = () => {
-    bottomReview.current.scrollIntoView({ behavior: 'smooth' });
+    bottomReview.current.scrollIntoView({ behavior: 'smooth' })
   };
   
 
-  const params = useParams();
+  const params = useParams()
 
   useEffect(() => {
     fetch(`/api/workspaces/${params.id}`)

@@ -50,7 +50,7 @@ const Workspaces = () => {
 
     <div >
         <br />
-        <h1>≡🬀 WORKSPACES 🬀≡</h1>
+        <h1>≡WORKSPACES≡</h1>
         <h3>-New York City-</h3>
         <br />        
         <Search handleSearchChange={handleSearchChange} />
