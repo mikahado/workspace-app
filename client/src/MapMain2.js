@@ -167,15 +167,22 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
               onClick={(e) => setSelectedPosition(e.latLng?.toJSON())}
               // center={currentPosition.lat ? currentPosition : defaultCenter}
             >
+
+                {zoomMap === 18 ?
                   <Marker
-                title={'The marker`s title will appear as a tooltip.'}
-                name={'SOMA'}
-                position={currentPosition} />
+                    title={'The marker`s title will appear as a tooltip.'}
+                    name={'SOMA'}
+                    position={currentPosition} />
+                    :
+                    null
+                }
+
+
 
             </GoogleMap>
           )            
 }
-        {/* {toggleButton ? footer : null} */}
+        {footer}
     </>
   );
 };
