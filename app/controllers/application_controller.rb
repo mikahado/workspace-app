@@ -1,4 +1,4 @@
-class ApplicationController < ActionController::Api
+class ApplicationController < ActionController::API
     include ActionController::Cookies
   
     rescue_from ActiveRecord::RecordInvalid, with: :unprocessable_entity_response
