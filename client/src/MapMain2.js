@@ -103,7 +103,7 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
     <>
     <div>
       <br/>
-    {toggle ? <button className="workspace-lookup" onClick={() => getLocation(selectedPosition)}><h3>Add {data?.address?.split(',')[0]}</h3></button> : null}
+    {toggle ? <button className="workspace-lookup" onClick={() => getLocation(selectedPosition)}><h2>Add {data?.address?.split(',')[0]}</h2></button> : null}
     </div>
     </>
 
@@ -148,8 +148,8 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
         />
       </div>
       <br/>
-      <h2>≡ {data?.address?.split(',')[0]} ≡</h2>
-
+      {footer}
+      <br />
       {isLoaded && (
             <GoogleMap
               id="workspace-map"
@@ -174,7 +174,7 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
             </GoogleMap>
           )            
 }
-        {footer}
+
     </>
   );
 };

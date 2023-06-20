@@ -60,7 +60,8 @@ const WorkspaceAdd = ({onAddWorkspace}) => {
               {<KeyboardBackspaceIcon />}
               </Button>
             </NavLink>
-            <h2>Add a Workspace</h2>
+            <h2>Add a workspace.</h2>
+            <small>Type the name in the search bar. Check the map. Click add</small>
  
     <MapMain2 addWorkspace={handleAddSubmit} data={data} selected={selected} />
     
