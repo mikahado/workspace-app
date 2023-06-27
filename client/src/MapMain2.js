@@ -30,7 +30,7 @@ const mapOptions = {
 
 const containerStyle = {
         marginTop: "20px",
-        height: "60vh",
+        height: "50vh",
         width: "100%",
 };
 
@@ -103,7 +103,7 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
     <>
     <div>
       <br/>
-    {toggle ? <button className="workspace-lookup" onClick={() => getLocation(selectedPosition)}><h2>Add {data?.address?.split(',')[0]}</h2></button> : null}
+    {toggle ? <button className="workspace-lookup" onClick={() => getLocation(selectedPosition)}><h2>Add <br />{data?.address?.split(',')[0]}</h2></button> : null}
     </div>
     </>
 

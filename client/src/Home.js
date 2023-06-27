@@ -19,7 +19,7 @@ const Home = () => {
             <p>work!</p>
             <br />
             <p>*</p>
-            <h3>≡🬀 WORKSPACE🬀≡</h3>
+            <h3>≡ WORKSPACE ≡</h3>
             <h4> <em>work from home <br /> away from home </em> </h4>
             <p>*</p>
 
