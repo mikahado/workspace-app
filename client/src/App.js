@@ -4,14 +4,12 @@ import Home from './Home';
 import Workspace from './Workspace'
 import Workspaces from './Workspaces'
 import Navigation from './Navigation'
-import Login from './Login'
 import WorkspaceAdd from './WorkspaceAdd'
-import MapMain from './MapMain'
 import MapMain2 from './MapMain2'
-import Map from './Map'
+import AuthDialog from './AuthDialog';
 import ServicesAdd from './ServicesAdd'
-import MapLocation from './MapLocation'
 import './App.css';
+import { UserProvider } from "./context/user"
 /*global google*/
 
 function App() {
@@ -21,6 +19,7 @@ function App() {
 
     <div className="App">
  
+    <UserProvider>
     <Navigation />  
       
         <Routes>
@@ -37,7 +36,7 @@ function App() {
           element={<WorkspaceAdd />} 
           />
           <Route path="/login" 
-            element={<Login />} 
+            element={<AuthDialog />} 
             />
 
           <Route path="/workspaces/servicesadd" 
@@ -49,6 +48,7 @@ function App() {
             />    
 
         </Routes>
+        </UserProvider>
        </div>  
 
      

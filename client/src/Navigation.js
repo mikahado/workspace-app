@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -7,10 +7,14 @@ import Diversity2RoundedIcon from '@mui/icons-material/Diversity2Rounded';
 import InputIcon from '@mui/icons-material/Input';
 import LogoutIcon from '@mui/icons-material/Logout';
 import SavedSearchIcon from '@mui/icons-material/SavedSearch';
+import PersonIcon from '@mui/icons-material/Person';
+import { UserContext } from "./context/user"
 
 function Navigation() {
 
-  const loggedIn = "true"
+  const { handleAuthClick, login, loggedIn } = useContext(UserContext)
+
+  // const loggedIn = "true"
   
   return (
     <div>
@@ -43,9 +47,9 @@ function Navigation() {
                     to="/login"
                     end
                   >
-                     <Button>
-                    |{<InputIcon />}
-                    </Button>
+                  <Button onClick={handleAuthClick}>
+                  .{<PersonIcon />}
+                  </Button>
                   </NavLink>
 
           {/* {loggedIn ?            

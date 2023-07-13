@@ -8,8 +8,8 @@ namespace :api do
   resources :reviews
   resources :services
 
-  get '/me', to: 'users#show'
-  post '/signup', to: 'users#create'
+  get '/me', to: 'ws_users#show'
+  post '/signup', to: 'ws_users#create'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   
