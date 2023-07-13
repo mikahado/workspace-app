@@ -1,2 +1,1 @@
-// what is this junk.
-const a = 5
+const a = 6
