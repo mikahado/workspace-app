@@ -67,9 +67,10 @@ const Workspaces = () => {
         {/* <h3>-New York City-</h3> */}
         <br />        
         <Search handleSearchChange={handleSearchChange} />
-
-       
+      
               <br />
+
+      <br />
 
       {showAddForm ? <WorkspaceAdd key={workspaces.id} onAddWorkspace={handleAddWorkspace} reviews={workspaces.reviews} workspace_id={workspaces.id} /> : null}
       <br />
