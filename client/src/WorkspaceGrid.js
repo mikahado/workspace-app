@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React from 'react';
 import { experimentalStyled as styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -13,30 +12,24 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const WorkspaceGrid = ({workspaceCard}) => {
-
+const WorkspaceGrid = ({ workspaceCard }) => {
   return (
     <div>
-        
-        <Box sx={{ margin: 4, flexGrow: 1 }}>
-         
-          <Grid  container spacing={{ xs: 2, md: 3 }} columns={{ xs: 2, sm: 8, md: 12 }}>
-
-            {workspaceCard.map(w => (
-
-                Array.from(Array(1)).map((_, index) => (
-                  <Grid item xs={2} sm={4} md={4} key={index}>
-                    <Item>{w}</Item>
-                  </Grid>
-                ))
-
-            ))}
-       
-          </Grid>
-        </Box>
-
+      <Box sx={{ margin: 4, flexGrow: 1 }}>
+        <Grid
+          container
+          spacing={{ xs: 2, md: 3 }}
+          columns={{ xs: 2, sm: 8, md: 12 }}
+        >
+          {workspaceCard.map((w, index) => (
+            <Grid item xs={2} sm={4} md={4} key={index}>
+              <Item w={`${w}`}>{w}</Item>
+            </Grid>
+          ))}
+        </Grid>
+      </Box>
     </div>
-  )
-}
+  );
+};
 
-export default WorkspaceGrid
+export default WorkspaceGrid;

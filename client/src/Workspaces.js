@@ -14,8 +14,14 @@ const Workspaces = () => {
 
   const [workspaces, setWorkspaces] = useState([])
   const [search, setSearch] = useState("")
+  // eslint-disable-next-line
   const [showAddForm, setShowAddForm] = useState(false)
-  const [categoryFilter, setCategoryFilter] = useState("Restaurant")
+  const [categoryFilter, setCategoryFilter] = useState("All")
+
+  const handleFilterChange = (e) => {
+    setCategoryFilter(e.target.value)
+  }
+
 
   useEffect(() => {
     fetch("/api/workspaces")
@@ -25,7 +31,6 @@ const Workspaces = () => {
       }
       ))
   }, [])
-  console.log(workspaces)
 
   const filterBySearch = workspaces?.filter(w => w.title?.toLowerCase().includes(search.toLowerCase())).filter(w => {
     if (categoryFilter === "All") {
@@ -34,8 +39,6 @@ const Workspaces = () => {
       return w.services.some(s => s.category === categoryFilter)
     }
   })
-
-  const filterByCategory = workspaces?.services?.filter(s => s.category === categoryFilter)
 
   const workspaceCard = filterBySearch?.map((w) =>
     <WorkspaceCard
@@ -47,9 +50,9 @@ const Workspaces = () => {
     setSearch(e.target.value)
   }
 
-  const handleShowAddClick = () => {
-    setShowAddForm(!showAddForm)
-  }
+  // const handleShowAddClick = () => {
+  //   setShowAddForm(!showAddForm)
+  // }
 
   const handleAddWorkspace = (newWorkspace) => {
     console.log("DATAAAA", newWorkspace)
@@ -73,7 +76,7 @@ const Workspaces = () => {
       {showAddForm ? <WorkspaceAdd key={workspaces.id} onAddWorkspace={handleAddWorkspace} reviews={workspaces.reviews} workspace_id={workspaces.id} /> : null}
       <br />
       < hr />
-      <Filter />
+      <Filter handleFilterChange={handleFilterChange}/>
       <WorkspaceGrid workspaceCard={workspaceCard} />
     </div>
 

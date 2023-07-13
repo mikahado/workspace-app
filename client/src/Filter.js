@@ -7,22 +7,19 @@ import FormControl from '@mui/material/FormControl';
 
 const Filter = ({ handleFilterChange }) => {
 
-  // const handleFilterSelect = (e) => {
-  //   handleFilterChange(e.target.value)
-  // }
-
   return (
     <div >
       <br />
-      <FormControl >
+      <FormControl onClick={handleFilterChange}>
 
         <RadioGroup
           row
           aria-labelledby="demo-row-radio-buttons-group-label"
           name="row-radio-buttons-group"
+          defaultValue={"All"}
         >
           <FormControlLabel value="All" control={<Radio />} label="All" />
-          <FormControlLabel value="Resturaunt" control={<Radio />} label="Resturaunt" />
+          <FormControlLabel value="Restaurant" control={<Radio />} label="Restaurant" />
           <FormControlLabel value="Cafe" control={<Radio />} label="Cafe" />
           <FormControlLabel value="POPS" control={<Radio />} label="POPS" />
           <FormControlLabel value="Random Nook" control={<Radio />} label="Random Nook" />
