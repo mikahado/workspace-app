@@ -1,0 +1,19 @@
+Current Tasks
+
+M - Home page - Make it awesome.
+
+K - Add more Types of Places - Workspace Form. ServicesAdd.js
+
+K - Filter by Type of Place. (Add Filter.js to Workspaces.js)
+
+M - add auth feature. conditional rednering for Add a Workspace button. Make Reviews available. 
+
+M - GoogleMaps - add workspace only works if you type in the name. 
+
+K - Work on CSS of individual Workspaces
+
+Future Tasks
+
+Ticketing system. Delete workspace. 
+
+kyle.a.brackman@gmail.com
