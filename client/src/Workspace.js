@@ -99,7 +99,7 @@ const Workspace = () => {
   }
 
 
-  if (workspace.services.length === 0) {
+  if (workspace?.services?.length === 0) {
     return (
       <div>
         <h1>≡🬀 {title} 🬀≡</h1>
@@ -136,9 +136,9 @@ const Workspace = () => {
         <br />
         <hr />
         {reviewItems}
-        <Button onClick={handleWorkspaceDeleteClick} variant="outlined" color="error">
+        {/* <Button onClick={handleWorkspaceDeleteClick} variant="outlined" color="error">
         Delete Workspace
-      </Button>
+      </Button> */}
         <div ref={bottomReview}></div>
       </div>
     );
@@ -176,9 +176,9 @@ const Workspace = () => {
         <br />
         <hr/>
         <br/>
-        <Button onClick={handleWorkspaceDeleteClick} variant="outlined" color="error">
+        {/* <Button onClick={handleWorkspaceDeleteClick} variant="outlined" color="error">
         Delete Workspace
-      </Button>
+      </Button> */}
       <br/> <br/> <br/> <br/>
       <div ref={bottomReview}></div>
       </div>

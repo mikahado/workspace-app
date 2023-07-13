@@ -7,6 +7,7 @@ import Navigation from './Navigation'
 import WorkspaceAdd from './WorkspaceAdd'
 import MapMain2 from './MapMain2'
 import AuthDialog from './AuthDialog';
+import Profile from './Profile'
 import ServicesAdd from './ServicesAdd'
 import './App.css';
 import { UserProvider } from "./context/user"
@@ -46,6 +47,10 @@ function App() {
           <Route path="/map2" 
             element={<MapMain2 />} 
             />    
+
+          <Route path="/profile" 
+            element={<Profile />} 
+            />     
 
         </Routes>
         </UserProvider>

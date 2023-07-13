@@ -12,8 +12,6 @@ const UserProvider = ({ children }) => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
-  console.log(user)
-
   useEffect(() => {
     fetch("/api/me")
       .then((resp) => resp.json())
@@ -115,14 +113,14 @@ const UserProvider = ({ children }) => {
     setLoggedIn(true);
   };
 
-  console.log(loggedIn)
 
   const handleAuthClick = () => {
     if (!loggedIn){
       setOpen(true);
+      console.log("not logged in")
     } else {
-    console.log('click')
-    navigate('/')
+      navigate("/workspaces")
+      setOpen(false);
     }
   };
 

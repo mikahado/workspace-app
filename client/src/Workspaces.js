@@ -51,12 +51,10 @@ const Workspaces = () => {
     <div >
         <br />
         <h1>≡WORKSPACES≡</h1>
-        <h3>-New York City-</h3>
+        {/* <h3>-New York City-</h3> */}
         <br />        
         <Search handleSearchChange={handleSearchChange} />
-            <NavLink to="/workspaces/add" end>
-               <Button variant="outlined" >Add a Workspace</Button>
-            </NavLink>
+
        
               <br />
 

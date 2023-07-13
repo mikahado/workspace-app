@@ -39,7 +39,7 @@ const [authChoice, setAuthChoice] = useState(true)
 
   return (
     <div>
-        <Button class="outline" onClick={logoutUser}>Logout</Button>
+        {/* <Button class="outline" onClick={logoutUser}>Logout</Button> */}
       {/* <Button variant="outlined" onClick={handleClickOpen}>
         Open alert dialog
       </Button> */}

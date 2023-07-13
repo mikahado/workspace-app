@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <style>
+    .logo-text { fill: #FFFFFF; font-family: 'Montserrat', sans-serif; font-size: 60px; text-anchor: middle; dominant-baseline: middle; letter-spacing: 4px; }
+    .catchphrase { fill: #FFFFFF; font-family: 'Montserrat', sans-serif; font-size: 20px; text-anchor: middle; dominant-baseline: middle; }
+    .city-silhouette { fill: #FFF; }
+  </style>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#F9A825" />
+  
+  <!-- Curvy Shape -->
+  <path d="M0 125 Q300 250 600 125 V400 H0 Z" fill="#333" />
+  
+  <!-- Text -->
+  <text class="logo-text" x="50%" y="50%">≡WORKSPACES≡</text>
+  
+  <!-- Catchphrase -->
+  <text class="catchphrase" x="50%" y="75%">empowering remote work</text>
+  <text class="catchphrase" x="50%" y="82%">anywhere, anytime</text>
+
+
+
+</svg>
