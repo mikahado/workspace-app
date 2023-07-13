@@ -14,18 +14,17 @@ const Profile = () => {
             <p>What would you like to do today?</p>
 
             <br/>
-            <NavLink to="/workspaces/add" end>
-               <Button variant="contained" >Add Workspace</Button>
+            <NavLink to="/workspaces" end>
+               <Button variant="contained">Favorites</Button>
             </NavLink>
             <br/><br/>
-            <NavLink to="/workspaces" end>
-               <Button variant="contained">View Saved </Button>
+            <NavLink to="/workspaces/add" end>
+               <Button variant="contained">Add Workspace</Button>
             </NavLink>
             <br/><br/>
             <NavLink to="/workspaces" end>
                <Button variant="contained">My Reviews </Button>
             </NavLink>
-            
             <br/><br/>
             <NavLink to="/workspaces" end>
                <Button variant="contained">Browse</Button>
