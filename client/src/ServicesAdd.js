@@ -78,6 +78,13 @@ const ServiceAdd = ({ service, id, toggle, setWorkspace }) => {
               <MenuItem value={"Cafe"}>Cafe</MenuItem>
               <MenuItem value={"Hotel Lobby"}>Hotel Lobby</MenuItem>
               <MenuItem value={"Bar"}>Bar</MenuItem>
+              <MenuItem value={"Public Space"}>Public Space</MenuItem>
+              <MenuItem value={"Library"}>Library</MenuItem>
+              <MenuItem value={"Restaurant"}>Restaurant</MenuItem>
+              <MenuItem value={"Coworking Space"}>Coworking Space</MenuItem>
+              <MenuItem value={"Museum"}>Museum</MenuItem>
+              <MenuItem value={"Gym"}>Gym</MenuItem>
+              <MenuItem value={"Bookstore"}>Bookstore</MenuItem>
             </Select>
           </FormControl>
         <br />

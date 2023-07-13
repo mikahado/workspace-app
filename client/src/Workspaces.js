@@ -6,6 +6,8 @@ import WorkspaceGrid from './WorkspaceGrid'
 import WorkspaceAdd from './WorkspaceAdd'
 import { NavLink } from "react-router-dom";
 
+import Filter from "./Filter.js"
+
 import Button from '@mui/material/Button';
 
 const Workspaces = () => {
@@ -13,58 +15,66 @@ const Workspaces = () => {
   const [workspaces, setWorkspaces] = useState([])
   const [search, setSearch] = useState("")
   const [showAddForm, setShowAddForm] = useState(false)
+  const [categoryFilter, setCategoryFilter] = useState("Restaurant")
 
   useEffect(() => {
     fetch("/api/workspaces")
-    .then(r => r.json())
-    .then((data => {
-      setWorkspaces(data)
-    }
+      .then(r => r.json())
+      .then((data => {
+        setWorkspaces(data)
+      }
       ))
   }, [])
+  console.log(workspaces)
 
-  // const filterBySearch = workspaces?.filter(c => c.title?.toLowerCase().includes(search.toLowerCase()))
+  const filterBySearch = workspaces?.filter(w => w.title?.toLowerCase().includes(search.toLowerCase())).filter(w => {
+    if (categoryFilter === "All") {
+      return true
+    } else {
+      return w.services.some(s => s.category === categoryFilter)
+    }
+  })
 
-  const filterBySearch = workspaces?.filter(c => c.title?.toLowerCase().includes(search.toLowerCase()))
+  const filterByCategory = workspaces?.services?.filter(s => s.category === categoryFilter)
 
-  const workspaceCard = filterBySearch?.map((w) => 
-    <WorkspaceCard 
+  const workspaceCard = filterBySearch?.map((w) =>
+    <WorkspaceCard
       key={w.id}
       workspace={w}
-      />)  
+    />)
 
-    const handleSearchChange = (e) => {
-      setSearch(e.target.value)
-    }
+  const handleSearchChange = (e) => {
+    setSearch(e.target.value)
+  }
 
-    const handleShowAddClick = () => {
-      setShowAddForm(!showAddForm)
-    }
+  const handleShowAddClick = () => {
+    setShowAddForm(!showAddForm)
+  }
 
-    const handleAddWorkspace = (newWorkspace) => {
-      console.log("DATAAAA", newWorkspace)
-      setWorkspaces([...workspaces, newWorkspace]);
-    }
-   
+  const handleAddWorkspace = (newWorkspace) => {
+    console.log("DATAAAA", newWorkspace)
+    setWorkspaces([...workspaces, newWorkspace]);
+  }
+
   return (
 
     <div >
-        <br />
-        <h1>≡WORKSPACES≡</h1>
-        <h3>-New York City-</h3>
-        <br />        
-        <Search handleSearchChange={handleSearchChange} />
-            <NavLink to="/workspaces/add" end>
-               <Button variant="outlined" >Add a Workspace</Button>
-            </NavLink>
-       
-              <br />
+      <br />
+      <h1>≡WORKSPACES≡</h1>
+      <h3>-New York City-</h3>
+      <br />
+      <Search handleSearchChange={handleSearchChange} />
+      <NavLink to="/workspaces/add" end>
+        <Button variant="outlined" >Add a Workspace</Button>
+      </NavLink>
 
-        {showAddForm ? <WorkspaceAdd key={workspaces.id} onAddWorkspace={handleAddWorkspace} reviews={workspaces.reviews} workspace_id={workspaces.id} /> : null}
-        <br />
-        < hr />
-    
-        <WorkspaceGrid workspaceCard={workspaceCard}/>
+      <br />
+
+      {showAddForm ? <WorkspaceAdd key={workspaces.id} onAddWorkspace={handleAddWorkspace} reviews={workspaces.reviews} workspace_id={workspaces.id} /> : null}
+      <br />
+      < hr />
+      <Filter />
+      <WorkspaceGrid workspaceCard={workspaceCard} />
     </div>
 
   )

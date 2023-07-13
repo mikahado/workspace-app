@@ -5,16 +5,16 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 
-const Filter = ({handleFilterChange}) => {
+const Filter = ({ handleFilterChange }) => {
 
-    const handleFilterSelect = (e) => {
-      handleFilterChange(e.target.value)
-      }
-    
+  // const handleFilterSelect = (e) => {
+  //   handleFilterChange(e.target.value)
+  // }
+
   return (
     <div >
-      <br/>
-      <FormControl onClick={handleFilterSelect}>
+      <br />
+      <FormControl >
 
         <RadioGroup
           row
@@ -29,10 +29,10 @@ const Filter = ({handleFilterChange}) => {
           <FormControlLabel value="Museum" control={<Radio />} label="Museum" />
           <FormControlLabel value="Diner" control={<Radio />} label="Diner" />
           <FormControlLabel value="Hotel Lobby" control={<Radio />} label="Hotel Lobby" />
-          
-      </RadioGroup>
-      
-    </FormControl>
+
+        </RadioGroup>
+
+      </FormControl>
 
 
 
