@@ -1,30 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# workspace-app
-# README
-
 WORKSPACES is an online app that helps you find the best spaces in NYC to do your work.
 
 Workspace is a curated database of FREE spots in the city where you can set up a laptop and headphones or a notebook and pen and get to work! From spacious to cafes to hotel lobbies, museums to libraries, Workspace welcomes suggestions of all your favorite spots to work-from-home, away from home.
