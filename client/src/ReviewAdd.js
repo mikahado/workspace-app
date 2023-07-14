@@ -5,7 +5,6 @@ import Button from '@mui/material/Button';
 
 const ReviewAdd = ({onAddReview, workspace_id, scrollToBottom, showReview}) => {
   
-  console.log(scrollToBottom)
 
   const [review, setReview] = useState({
     ws_user_id: 1,

@@ -37,7 +37,6 @@ const ServiceAdd = ({ service, id, toggle, setWorkspace }) => {
           if (data.errors) {
             const errorsLis = data.errors.map((e) => <li>{e}</li>);
             setErrors(errorsLis);
-            console.log(data.errors)
           } else {
             // data is structured like this: {id: 97, category: 'Cafe', wifi: null, description: 'haha', workspace_id: 139, …}
             toggle()

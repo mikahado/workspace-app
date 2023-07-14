@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 const Profile = () => {
 
-    const { loggedIn, logoutUser, user } = useContext(UserContext)
+   const { loggedIn, logoutUser, user } = useContext(UserContext)
 
   return (
     <div>
@@ -15,20 +15,22 @@ const Profile = () => {
 
             <br/>
             <NavLink to="/workspaces" end>
-               <Button variant="contained">Favorites</Button>
+               <Button className="profile-buttons" variant="contained">Find Workspace</Button>
+            </NavLink>
+            <br/><br/>
+            <NavLink to="/workspaces" end>
+               <Button className="profile-buttons" variant="contained">My Favorites</Button>
             </NavLink>
             <br/><br/>
             <NavLink to="/workspaces/add" end>
-               <Button variant="contained">Add Workspace</Button>
+               <Button className="profile-buttons" variant="contained">Add Workspace</Button>
             </NavLink>
             <br/><br/>
             <NavLink to="/workspaces" end>
-               <Button variant="contained">My Reviews </Button>
+               <Button className="profile-buttons" variant="contained">My Reviews </Button>
             </NavLink>
             <br/><br/>
-            <NavLink to="/workspaces" end>
-               <Button variant="contained">Browse</Button>
-            </NavLink>
+            
             
             <br/><br/>
 

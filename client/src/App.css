@@ -97,9 +97,6 @@
   padding: 0.5rem;
 }
 
-
-
-
 .small-image {
   width: 8rem;
   height: auto
@@ -129,4 +126,8 @@
 
 .inner-footer {
   padding: 1rem 0;
+}
+
+.profile-buttons {
+  width: 200px;
 }

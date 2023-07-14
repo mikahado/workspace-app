@@ -82,13 +82,12 @@ const Workspace = () => {
   }
 
   const handleDeleteWorkspace = (id) => {
-    console.log(id)
     fetch(`/api/workspaces/${id}`, {
       method: "DELETE",
     })
       .then(() => onWorkspaceDelete(id))
       .catch((error) => {
-        console.log("Error deleting workspace!!", error);
+        alert("Error deleting workspace!!")
       });
       navigate('/workspaces')
       alert(`You have deleted the workspace!`)

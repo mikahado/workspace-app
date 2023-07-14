@@ -117,7 +117,6 @@ const UserProvider = ({ children }) => {
   const handleAuthClick = () => {
     if (!loggedIn){
       setOpen(true);
-      console.log("not logged in")
     } else {
       navigate("/workspaces")
       setOpen(false);
