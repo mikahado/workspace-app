@@ -131,3 +131,15 @@
 .profile-buttons {
   width: 200px;
 }
+
+.review-container {
+  width: 50%;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 0.7em;
+}

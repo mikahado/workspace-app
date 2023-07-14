@@ -134,7 +134,9 @@ const Workspace = () => {
         ) : null}
         <br />
         <hr />
+        <div className="review-container">
         {reviewItems}
+        </div>
         {/* <Button onClick={handleWorkspaceDeleteClick} variant="outlined" color="error">
         Delete Workspace
       </Button> */}
@@ -171,7 +173,9 @@ const Workspace = () => {
         <br />
         <hr />
         <br />
+        <div className="review-container">
         {reviewItems}
+        </div>
         <br />
         <hr/>
         <br/>

@@ -5,24 +5,10 @@ import Button from '@mui/material/Button';
 
 // /*global google*/ 
 
-
 const MapLocation = ({ workspaces, lat, lng }) => {
 
 
   const [currentPosition, setCurrentPosition ] = useState({});
-
-
-  // const markerRef = useRef(null);
-
-
-//   const success = (position) => {
-//     const { latitude, longitude } = position.coords;
-//     const currentPosition = {
-//       lat: latitude,
-//       lng: longitude
-//     }
-//     setCurrentPosition(currentPosition);
-//   }
 
  
   const mapStyles = () => ({

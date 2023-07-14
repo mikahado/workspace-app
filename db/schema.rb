@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_16_183839) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_14_161239) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,7 +20,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_183839) do
     t.bigint "workspace_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "ws_user_id", null: false
     t.index ["workspace_id"], name: "index_reviews_on_workspace_id"
+    t.index ["ws_user_id"], name: "index_reviews_on_ws_user_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -49,8 +51,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_16_183839) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "favorites"
+    t.string "reviews"
   end
 
   add_foreign_key "reviews", "workspaces"
+  add_foreign_key "reviews", "ws_users"
   add_foreign_key "services", "workspaces"
 end

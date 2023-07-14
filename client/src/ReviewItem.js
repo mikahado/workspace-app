@@ -42,14 +42,14 @@ const ReviewItem = ({review, onDeleteReview, onEditReview}) => {
     <div>
       <hr />
       <br/><br/>
-          {/* <p> <b>User_{Math.floor(Math.random() * 100)}</b> : </p> */}
-          {stars} 
-          <br /><br />
+      <div className="review-card">
+          <p> <b>User_{Math.floor(Math.random() * 100)}</b> : </p>
           {comment}
+          {stars} 
+          
           <br /><br />
-        <div>
-          {/* <DeleteOutlineOutlinedIcon onClick={handleDeleteClick} />
-          <ModeEditIcon onClick={handleShowEditor}/> */}
+          <DeleteOutlineOutlinedIcon onClick={handleDeleteClick} />
+          <ModeEditIcon onClick={handleShowEditor}/>
 
           {showEditor 
             ? <ReviewEdit 

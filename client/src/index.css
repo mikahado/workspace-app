@@ -1,7 +1,7 @@
 body {
-  background-color :
-  /* #000000 */
-  #FFFFFF
+  /* background-color :
+  #FFFFFF; */
+  background-image: url('./img/background1.svg')
 ;
 
   margin: 10;

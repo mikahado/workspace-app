@@ -1,6 +1,6 @@
 class Api::ReviewsController < ApplicationController
 
-    skip_before_action :authorize, only: [:index, :show]
+    skip_before_action :authorize
 
     def index
         reviews = Review.all
@@ -35,7 +35,7 @@ class Api::ReviewsController < ApplicationController
     private
 
     def review_params
-    params.require(:review).permit(:rating, :comment, :workspace_id)
+    params.require(:review).permit(:rating, :comment, :workspace_id, :ws_user_id)
     end
 
 
