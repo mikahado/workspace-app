@@ -132,7 +132,7 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
   const [libraries] = useState(["places"]);
 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyB6iTD6vclUpZ-BnAazxNCQmddOFn_nphw",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries,
   });
 
