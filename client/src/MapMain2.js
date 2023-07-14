@@ -156,7 +156,9 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
               mapContainerStyle={containerStyle}
               draggable={false}
               zoom={zoomMap}
-              disableDefaultUI={mapOptions.disableDefaultUI}
+              options={{
+                disableDefaultUI: true
+              }}
               center={currentPosition}
               // onClick={(e) => setSelectedPosition(e.latLng?.toJSON())}
 

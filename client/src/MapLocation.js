@@ -38,8 +38,12 @@ const MapLocation = ({ workspaces, lat, lng }) => {
           id='workspace-map'
           mapContainerStyle={mapStyles()}
           draggable={true}
-          zoom={20}
+          zoom={18}
           center={{lat, lng}}
+          options={{
+            disableDefaultUI: true,
+            tilt: 10
+          }}
         >
 
           <MarkerF

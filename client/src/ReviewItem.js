@@ -40,29 +40,27 @@ const ReviewItem = ({review, onDeleteReview, onEditReview}) => {
   return (
 
     <div>
-      <hr />
       <br/><br/>
       <div className="review-card">
-          <p> <b>User_{Math.floor(Math.random() * 100)}</b> : </p>
-          {comment}
+          <b>User_{Math.floor(Math.random() * 100)}</b> 
           {stars} 
-          
-          <br /><br />
-          <DeleteOutlineOutlinedIcon onClick={handleDeleteClick} />
-          <ModeEditIcon onClick={handleShowEditor}/>
+          <div>
+          {comment}
+          </div>
+          {/* <DeleteOutlineOutlinedIcon onClick={handleDeleteClick} />
+          <ModeEditIcon onClick={handleShowEditor}/> */}
 
-          {showEditor 
+          {/* {showEditor 
             ? <ReviewEdit 
                 key={id} 
                 id={id} 
                 onEditReview={onEditReview}
                 />
             : null 
-          }
+          } */}
           
         </div>
-      <hr />
-    </div>         
+     </div>         
   )
 }
 

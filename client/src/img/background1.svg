@@ -2,14 +2,14 @@
   <style>
     @keyframes waveAnimation {
       0% { fill: #FFFFFF; }
-      50% { fill: #DDDDDD; }
+      50% { fill: #F5F8FA; }
       100% { fill: #FFFFFF; }
     }
   </style>
 
   <rect width="100%" height="100%" fill="#FFFFFF" />
 
-  <rect width="100%" height="100%" fill="#DDDDDD">
-    <animate attributeName="opacity" attributeType="XML" values="1;0;1" dur="8s" repeatCount="indefinite" />
+  <rect width="100%" height="100%" fill="#F5F8FA">
+    <animate attributeName="fill" attributeType="CSS" values="#FFFFFF; #F5F8FA; #FFFFFF" dur="8s" repeatCount="indefinite" />
   </rect>
 </svg>

@@ -8,9 +8,8 @@ const Home = () => {
         <div className="App">
             <br />
             <h1>≡WORKSPACE≡ </h1>
-            <h3><em>-New York City-</em></h3>
             <br />
-            <p>WORKSPACE <br/>helps you find the best spaces <br/>in NYC to do your work.</p>
+            <p>WORKSPACE <br/>helps you find the best spaces <br/>in to do your work.</p>
             <p>Workspace <br/> is a map and database <br/> of free spots in the city </p>
             <p>where you can set up <br/> a laptop and headphones </p>
             <p>or a notebook and pen </p>
