@@ -8,14 +8,15 @@ const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#90EE90' : '#F8F8FF',
   ...theme.typography.body2,
   padding: theme.spacing(2),
-  textAlign: 'left',
+  textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
 
 const WorkspaceGrid = ({ workspaceCard }) => {
   return (
     <div>
-      <Box sx={{ margin: 4, flexGrow: 1 }}>
+      <br/>
+      <Box sx={{ margin: 0, flexGrow: 1 }}>
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}

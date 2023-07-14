@@ -9,10 +9,9 @@ const Search = ({handleSearchChange}) => {
     <div>
       <Box component="form" sx={{ '& > :not(style)': { m: 1, width: '25ch' }, }} noValidate autoComplete="off">
 
-        <TextField id="outlined-basic" onChange={handleSearchChange} variant="outlined" placeholder="Search NYC"/>
+        <TextField id="outlined-basic" className="search-box" onChange={handleSearchChange} variant="outlined" placeholder="Search Workspaces"/>
 
       </Box>
-        <br />
     </div>
   )
 }

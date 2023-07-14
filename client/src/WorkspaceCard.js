@@ -29,19 +29,17 @@ const WorkspaceCard = ({ workspace }) => {
 
         {/* <img className='locationImage' src={require('./img/upload-img-placeholder.png')} alt="location" /> */}
 
-        <img className='locationImage' src={`https://maps.googleapis.com/maps/api/staticmap?center=${workspace?.lat},${workspace?.lng}&zoom=16&size=400x400&maptype=roadmap&markers=${workspace?.lat},${workspace?.lng}&key=AIzaSyB6iTD6vclUpZ-BnAazxNCQmddOFn_nphw`} alt="location"/>
-
-
+        <img className='locationImage' src={`https://maps.googleapis.com/maps/api/staticmap?center=${workspace?.lat},${workspace?.lng}&zoom=16&size=400x400&maptype=roadmap&markers=${workspace?.lat},${workspace?.lng}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`} alt="Static Map"/>
 
 
         <br/>
         {/* {address}<br /> */}
         {service}
 
-      <br/>
+
         
         <Rating name="read-only" value={Math.ceil(ratingsAvg)} readOnly />
-          <br />
+
           <Link to={`/workspaces/${workspace.id}`}>
         <p>{allRatings?.length} reviews</p>
         </Link>
