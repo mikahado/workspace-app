@@ -20,7 +20,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_161239) do
     t.bigint "workspace_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "ws_user_id", null: false
+    t.bigint "ws_user_id"
     t.index ["workspace_id"], name: "index_reviews_on_workspace_id"
     t.index ["ws_user_id"], name: "index_reviews_on_ws_user_id"
   end
