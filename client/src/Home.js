@@ -10,6 +10,8 @@ const Home = () => {
             <br />
             <h1>≡WORKSPACE≡ </h1>
             <br />
+            <h4> <em>work from home <br /> away from home </em> </h4>
+            <br/>
             <p>WORKSPACE <br/>helps you find the best spaces <br/>in to do your work.</p>
             <p>Workspace <br/> is a map and database <br/> of free spots in the city </p>
             <p>where you can set up <br/> a laptop and headphones </p>
@@ -20,7 +22,6 @@ const Home = () => {
             <br />
             <p>*</p>
             <h3>≡ WORKSPACE ≡</h3>
-            <h4> <em>work from home <br /> away from home </em> </h4>
             <p>*</p>
 
             <br />
