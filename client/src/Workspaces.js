@@ -54,13 +54,15 @@ const Workspaces = () => {
 
   return (
     <div>
-      <br />
-      <h1>≡WORKSPACES≡</h1>
+      <br /><br/>
+      <h1 className="home-title">WORKSPACES</h1>
+      <br/><br/>
       <Search handleSearchChange={handleSearchChange} />
 
-
+      <br/>
       <Button onClick={handleFilterClick}>Filter by Category</Button>
       {filterToggle ? <Filter handleFilterChange={handleFilterChange} /> : null }
+      <br/> <br/>
       <WorkspaceGrid workspaceCard={workspaceCard} />
     </div>
   );

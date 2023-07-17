@@ -18,6 +18,7 @@ const ReviewItem = ({ review, onDeleteReview, onEditReview }) => {
     onDeleteReview(id);
   }
 
+
   const stars = Array.from({ length: rating }, (_, index) => (
     <span key={index} role="img" aria-label="star">
       ⭐
@@ -43,17 +44,6 @@ const ReviewItem = ({ review, onDeleteReview, onEditReview }) => {
       <div className="review-content">
         <div className="review-comment">{comment}</div>
       </div>
-      {/* <div className="review-actions">
-        <DeleteOutlineOutlinedIcon onClick={handleDeleteClick} />
-        <ModeEditIcon onClick={handleShowEditor} />
-      </div>
-      {showEditor && (
-        <ReviewEdit
-          key={id}
-          id={id}
-          onEditReview={onEditReview}
-        />
-      )} */}
     </div>
   );
 }

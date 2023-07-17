@@ -177,7 +177,7 @@ const Workspace = () => {
         
      
           <Button variant="outlined" onClick={handleShowReviewClick}>Write a review</Button>  
-        
+        <br/>
         
         {showReview ? (
           <ReviewAdd

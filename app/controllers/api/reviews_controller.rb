@@ -26,9 +26,9 @@ class Api::ReviewsController < ApplicationController
         render json: review 
     end
 
-    def delete
+    def destroy
         review = Review.find_by(id: params[:id])
-        review.destroy
+        review.delete
         render json: review 
     end
 

@@ -12,8 +12,6 @@ const UserProvider = ({ children }) => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
-  console.log(allUsers)
-
   useEffect(() => {
     fetch("/api/me")
       .then((resp) => resp.json())
@@ -86,6 +84,65 @@ const UserProvider = ({ children }) => {
     }
   };
 
+  const onDeleteReview = (id, updatedReview) => {
+    fetch(`/api/reviews/${id}`, {
+      method: "DELETE",
+    })
+      .then((resp) => {
+        if (resp.ok) {
+          alert("Review deleted");
+
+          setUser((prevUser) => ({
+            ...prevUser,
+            reviews: prevUser.reviews.filter((review) => review.id !== id),
+          }));
+        }
+      })
+      .catch((error) => {
+        console.log("Error deleting review:", error);
+      });
+  };
+  
+  const updateMyReview = (updatedReview) => {
+    const id = updatedReview.id;
+    
+    fetch(`/api/reviews/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedReview),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {
+        if (data.errors) {
+          // Handle errors if necessary
+          console.log("Error updating review:", data.errors);
+        } else {
+          setUser((prevUser) => {
+            const updatedReviews = prevUser.reviews.map((review) => {
+              if (review.id === id) {
+                return {
+                  ...review,
+                  ...data, // Merge the updated review data from the server response
+                };
+              }
+              return review;
+            });
+            return {
+              ...prevUser,
+              reviews: updatedReviews,
+            };
+          });
+        }
+      })
+      .catch((error) => {
+        console.log("Error updating review:", error);
+      });
+  };
+  
+
+
   return (
     <UserContext.Provider
       value={{
@@ -96,11 +153,13 @@ const UserProvider = ({ children }) => {
         login,
         loggedIn,
         handleRemoveUser,
+        onDeleteReview,
         logoutUser,
         errors,
         handleAuthClick,
         open,
-        setOpen
+        setOpen,
+        updateMyReview
       }}
     >
       {children}
