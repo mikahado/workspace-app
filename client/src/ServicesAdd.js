@@ -12,9 +12,11 @@ const ServiceAdd = ({ service, id, toggle, setWorkspace }) => {
     const [services, setServices] = useState({
         workspace_id: id,
         category: "",
-        description: ""
+        description: "",
+        has_wifi: null
         });  
 
+console.log(services.has_wifi)
 
     const [errors, setErrors] = useState([])
 
@@ -86,7 +88,25 @@ const ServiceAdd = ({ service, id, toggle, setWorkspace }) => {
               <MenuItem value={"Bookstore"}>Bookstore</MenuItem>
             </Select>
           </FormControl>
-        <br />
+          <br/><br/>
+
+          <FormControl fullWidth sx={{ width: "25ch", textAlign: "center" }} >
+            <InputLabel id="demo-simple-select-label">Wifi</InputLabel>
+            <Select
+  labelId="demo-simple-select-label"
+  id="demo-simple-select"
+  value={services.has_wifi}
+  label="has_wifi"
+  onChange={(e) =>
+    setServices({ ...services, has_wifi: e.target.value }) // Update the "has_wifi" state
+  }
+>
+  <MenuItem value={true}>Good WiFi</MenuItem>
+  <MenuItem value={false}>Poor or no WiFi</MenuItem>
+</Select>
+
+          </FormControl>
+        <br /><br/>
         <TextField
           id="outlined-multiline-static"
           label="Description"
@@ -98,7 +118,7 @@ const ServiceAdd = ({ service, id, toggle, setWorkspace }) => {
           }     
         />
 
-        <br />
+        <br /><br/>
         <Button type="submit" variant="contained" >Submit</Button>
         {errors}
       

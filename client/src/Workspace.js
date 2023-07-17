@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { useParams } from "react-router-dom";
 import ReviewItem from "./ReviewItem";
 import ReviewAdd from "./ReviewAdd";
@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import MapLocation from "./MapLocation";
 import ServicesAdd from "./ServicesAdd";
 import ServiceItemFull from "./ServiceItemFull"
+import { UserContext } from "./context/user"
+
 import { useNavigate  } from "react-router-dom";
 
 const Workspace = () => {
@@ -13,17 +15,17 @@ const Workspace = () => {
     reviews: [],
     services: [],
   });
+
+  const { loggedIn } = useContext(UserContext)
+  
   const navigate = useNavigate()
   const title = workspace?.title?.split(",")[0]
   const [showReview, setShowReview] = useState(false)
   const [showInfoForm, setShowInfoForm] = useState(false)
+  
   const reviews = useRef(null)
   const details = useRef(null)
   const top = useRef(null)
-
-  console.log("services", workspace.services)
-
-  console.log("reviews", workspace.reviews)
 
   const scrollToDetails = () => {
     details.current.scrollIntoView({ behavior: 'smooth' })
@@ -36,8 +38,6 @@ const Workspace = () => {
   const scrollToTop = () => {
     top.current.scrollIntoView({ behavior: 'smooth' })
   };
-
-console.log(workspace)
   
   const params = useParams()
 
@@ -74,19 +74,26 @@ console.log(workspace)
   //   setWorkspace({ ...workspace, reviews: updatedReviews });
   // };
 
-  const reviewItems = workspace?.reviews?.map((w) => (
-    <ReviewItem
-      key={w.id}
-      review={w}
-      // onDeleteReview={handleDeleteReview}
-      // onEditReview={handleEditReview}
-      workspace_id={workspace.id}
-      // scrollToBottom={scrollToBottom}
-    />
+  const reviewItems = workspace?.reviews
+  ?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+  ?.map((w) => (
+    <div key={w.id} className="review-item">
+      <ReviewItem
+        review={w}
+        // onDeleteReview={handleDeleteReview}
+        // onEditReview={handleEditReview}
+        workspace_id={workspace.id}
+      />
+    </div>
   ))
+  ?.reverse();
+
+
+
 
   const handleShowReviewClick = () => {
     setShowReview(!showReview);
+    scrollToReviews()
   }
 
   const handleInfoToggleClick = () => {
@@ -98,41 +105,45 @@ console.log(workspace)
       <div>
         <h1>≡🬀 {title} 🬀≡</h1>
         <br />
-        <p>This workspace needs details!</p>
+        <h3>This is a new Workspace!</h3>
+        <h3>This workspace needs details.</h3>
         <Button variant="outlined" onClick={handleInfoToggleClick}>
-          Add Info
+          Add Details
         </Button>
         {showInfoForm ? (
           <ServicesAdd id={workspace.id} toggle={handleInfoToggleClick} setWorkspace={setWorkspace} />
         ) : null}
-        <br />
-        <br />
-        <h2>Reviews</h2>
-        <Button variant="outlined" onClick={handleShowReviewClick}>
-          Write a Review
-        </Button>
-        <br />
-        <br />
+        <br /> <br />
         <MapLocation lat={workspace?.lat} lng={workspace?.lng} />
-
-        <br />
-        {showReview ? (
-          <ReviewAdd
-            key={workspace.id}
-            onAddReview={handleAddReview}
-            reviews={workspace?.reviews}
-            workspace_id={workspace.id}
-            showReview={handleShowReviewClick}
-          />
-        ) : null}
-        <br />
-        <hr />
+        <br /> <br />
         <div className="review-container">
-        {reviewItems}
-        </div>
+
+      <h2 className="titles">Reviews</h2>
+      <Button variant="outlined" onClick={handleShowReviewClick} >
+        Write a review
+      </Button>
+      <br />
+      {showReview ? (
+        <ReviewAdd
+          key={workspace.id}
+          onAddReview={handleAddReview}
+          reviews={workspace?.reviews}
+          workspace_id={workspace.id}
+          showReview={handleShowReviewClick}
+        />
+      ) : null}
+      {reviewItems}
+
+    </div>
+    
+
+    <br /> <br /><br /> <br />
+    <div ref={reviews}></div>
       </div>
     );
+
   } else {
+
     return (
       <div>
         <br/>
@@ -163,7 +174,11 @@ console.log(workspace)
         <br />
         <div  className="review-container">
         <h2 className="titles">Reviews</h2>
-        <Button variant="outlined">Write a review</Button>
+        
+     
+          <Button variant="outlined" onClick={handleShowReviewClick}>Write a review</Button>  
+        
+        
         {showReview ? (
           <ReviewAdd
             key={workspace.id}

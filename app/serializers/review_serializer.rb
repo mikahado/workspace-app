@@ -1,5 +1,6 @@
 class ReviewSerializer < ActiveModel::Serializer
-  attributes :id, :rating, :comment
+  attributes :rating, :comment, :ws_user_id, :workspace_id, :created_at
+
   has_one :workspace
-  # has_one :ws_user
+  has_one :ws_user
 end

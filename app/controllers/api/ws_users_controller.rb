@@ -1,14 +1,16 @@
 class Api::WsUsersController < ApplicationController
     
-    skip_before_action :authorize, only: :create
+    skip_before_action :authorize, only: [:create, :index]
 
+    def index
+        allUsers = WsUser.all
+        render json: allUsers
+    end
+   
     def show
         render json: @current_user
     end
 
-    def index
-        render json: WsUser.all
-    end
 
     def create 
         user = WsUser.create!(user_params)

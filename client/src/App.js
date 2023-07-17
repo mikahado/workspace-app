@@ -10,6 +10,7 @@ import AuthDialog from './AuthDialog';
 import Profile from './Profile'
 import ServicesAdd from './ServicesAdd'
 import './App.css';
+import ReviewsUserArchive from './ReviewsUserArchive'
 import { UserProvider } from "./context/user"
 /*global google*/
 
@@ -50,7 +51,11 @@ function App() {
 
           <Route path="/profile" 
             element={<Profile />} 
-            />     
+            />    
+
+<Route path="/myreviews" 
+            element={<ReviewsUserArchive />} 
+            />    
 
         </Routes>
         </UserProvider>

@@ -27,9 +27,8 @@ const WorkspaceCard = ({ workspace }) => {
         <h2>{title}</h2>
         </Link>
 
-        {/* <img className='locationImage' src={require('./img/upload-img-placeholder.png')} alt="location" /> */}
-
-        <img className='locationImage' src={`https://maps.googleapis.com/maps/api/staticmap?center=${workspace?.lat},${workspace?.lng}&zoom=16&size=400x400&maptype=roadmap&markers=${workspace?.lat},${workspace?.lng}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`} alt="Static Map"/>
+ 
+        <img className='locationImage' src={`https://maps.googleapis.com/maps/api/staticmap?center=${workspace?.lat},${workspace?.lng}&zoom=17&size=400x400&maptype=roadmap&markers=${workspace?.lat},${workspace?.lng}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`} alt="Static Map"/>
 
 
         <br/>

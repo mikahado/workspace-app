@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_14_161239) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_16_210616) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,9 +40,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_161239) do
     t.string "address"
     t.float "lat"
     t.float "lng"
-    t.string "media"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "ws_user_id"
+    t.index ["ws_user_id"], name: "index_workspaces_on_ws_user_id"
   end
 
   create_table "ws_users", force: :cascade do |t|
@@ -58,4 +59,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_14_161239) do
   add_foreign_key "reviews", "workspaces"
   add_foreign_key "reviews", "ws_users"
   add_foreign_key "services", "workspaces"
+  add_foreign_key "workspaces", "ws_users"
 end

@@ -10,6 +10,8 @@ const Signup = () => {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [passwordConfirmation, setPasswordConfirmation] = useState("")
+    const [email, setEmail] = useState("")
+
     const [errorsList, setErrorsList] = useState("")
 
     const navigate = useNavigate()
@@ -26,7 +28,8 @@ const Signup = () => {
             body: JSON.stringify({
                 username: username,
                 password: password,
-                password_confirmation: passwordConfirmation
+                password_confirmation: passwordConfirmation,
+                email: email
             })
         })
         .then(res => res.json())
@@ -52,39 +55,22 @@ const Signup = () => {
         <TextField id="outlined-basic" label="Create Username" variant="outlined" type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)} />
-{/*             
-            <label>Username: </label>
-            <input 
-            type="text"
-            id="username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            /> < br/>< br/> */}
             <br/><br/>
-             <TextField id="outlined-basic" label="Password" variant="outlined" type="text"
+            <TextField id="outlined-basic" label="Email" variant="outlined" type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)} />
+
+            <br/><br/>
+             <TextField id="outlined-basic" label="Password" variant="outlined" type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)} />
 
-        {/* <label>Password: </label>
-        <input 
-        type="password"
-        id="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        /> < br/>< br/> */}
         <br/><br/>
 
-            <TextField id="outlined-basic" label="Confirm Password" variant="outlined" type="text"
+            <TextField id="outlined-basic" label="Confirm Password" variant="outlined" type="password"
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)} />
 
-        {/* <label>Confirm Password: </label>
-        <input 
-        type="password"
-        id="password_confirmation"
-        value={passwordConfirmation}
-        onChange={(e) => setPasswordConfirmation(e.target.value)}
-        /> <br />< br/> */}
         <br/><br/>
         <Button variant="contained" className="button1" type="submit">Submit</Button>
         </form>

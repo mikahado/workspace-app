@@ -12,6 +12,8 @@ const UserProvider = ({ children }) => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
+  console.log(allUsers)
+
   useEffect(() => {
     fetch("/api/me")
       .then((resp) => resp.json())
@@ -31,6 +33,7 @@ const UserProvider = ({ children }) => {
     fetch("/api/ws_users")
       .then((resp) => resp.json())
       .then((data) => {
+        console.log(data)
         if (data.errors) {
           const errorLis = data.errors.map((e) => <li>{e}</li>);
           setErrors(errorLis);
@@ -40,47 +43,7 @@ const UserProvider = ({ children }) => {
       });
   };
 
-  const createMyProfile = (profile) => {
-    // fetch(`/profiles`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(profile),
-    // })
-    //   .then((resp) => resp.json())
-    //   .then((data) => {
-    //     if (data.errors) {
-    //       const errorsLis = data.errors.map((e) => <li>{e}</li>);
-    //       setErrors(errorsLis);
-    //     } else {
-    //       setUser(data);
-    //       navigate("/onboard/preference");
-    //       setErrors([]);
-    //     }
-    //   });
-  };
-
-  const updateMyProfile = (updatedData) => {
-    // fetch(`/profiles/${user.id}`, {
-    //   method: "PATCH",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(updatedData),
-    // })
-    //   .then((resp) => resp.json())
-    //   .then((data) => {
-    //     if (data.errors) {
-    //       const errorsLis = data.errors.map((e) => <li>{e}</li>);
-    //       setErrors(errorsLis);
-    //     } else {
-    //       setUser(data);
-    //       setErrors([]);
-    //       navigate("/my-profile");
-    //     }
-    //   });
-  };
+  
 
   const handleRemoveUser = (id) => {
     const updatedUsers = allUsers.filter((p) => p.id !== id);
@@ -127,9 +90,7 @@ const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         user,
-        updateMyProfile,
         allUsers,
-        createMyProfile,
         logout,
         signup,
         login,

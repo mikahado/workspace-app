@@ -5,12 +5,14 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Unstable_Grid2';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#90EE90' : '#F8F8FF',
+  backgroundColor: '#FFFFFF',
   ...theme.typography.body2,
   padding: theme.spacing(2),
   textAlign: 'center',
   color: theme.palette.text.secondary,
+  boxShadow: '0px 0px 10px 5px rgba(0, 0, 0, 0.1), 0px 0px 20px 10px rgba(0, 0, 0, 0.08), 0px 0px 30px 15px rgba(0, 0, 0, 0.06), 0px 0px 40px 20px rgba(0, 0, 0, 0.04)',
 }));
+
 
 const WorkspaceGrid = ({ workspaceCard }) => {
   return (

@@ -46,10 +46,10 @@ const MapLocation = ({ workspaces, lat, lng }) => {
           }}
         >
 
-          <MarkerF
+          {/* <MarkerF
             position={{lat, lng}}
             title="hehehe"
-              />        
+              />         */}
 
           {
             // selected.location ?

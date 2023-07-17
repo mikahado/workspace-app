@@ -29,7 +29,7 @@ const Login = () => {
       .then((user) => {
         if (!user.error) {
           login(user)
-          navigate('/')
+          navigate('/profile')
         } else { 
           setUsername("")
           setPassword("")
@@ -50,7 +50,7 @@ const Login = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)} />
           <br/><br/>
-           <TextField id="outlined-basic" label="Password" variant="outlined" type="text"
+           <TextField id="outlined-basic" label="Password" variant="outlined" type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)} />
           <br/><br/>

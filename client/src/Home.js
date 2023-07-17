@@ -5,7 +5,8 @@ const Home = () => {
 
     return (
         <>
-        <div className="App">
+        <br/><br/>
+        <div className="home">
             <br />
             <h1>≡WORKSPACE≡ </h1>
             <br />
