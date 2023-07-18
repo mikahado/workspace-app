@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 import WorkspaceCard from "./WorkspaceCard";
 import Search from "./Search";
@@ -20,6 +20,12 @@ const Workspaces = () => {
 
   const handleFilterChange = (e) => {
     setCategoryFilter(e.target.value);
+  };
+
+  const searchBar = useRef(null)
+
+  const scrollToSearch = () => {
+    searchBar.current.scrollIntoView({ behavior: 'smooth' })
   };
 
   useEffect(() => {

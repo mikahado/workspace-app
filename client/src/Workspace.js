@@ -71,9 +71,6 @@ const Workspace = () => {
   ))
   ?.reverse();
 
-console.log(workspace.lat)
-
-
   const handleShowReviewClick = () => {
     setShowReview(!showReview);
     scrollToReviews()
