@@ -7,6 +7,8 @@ import WifiOffIcon from '@mui/icons-material/WifiOff';
 const ServiceItemFull = ({ service }) => {
   const serviceItem = service[0];
 
+  console.log(service)
+
   if (!serviceItem) {
     return null;
   }
@@ -22,8 +24,8 @@ const ServiceItemFull = ({ service }) => {
         <span>{serviceItem.category}</span>
       </div>
       <div className="service-item">
-        {serviceItem.has_wifi ? <WifiIcon /> : <WifiOffIcon />}
-        <span>{serviceItem.has_wifi ? 'Good WiFi' : 'Poor or no WiFi'}</span>
+        {serviceItem.wifi ? <WifiIcon /> : <WifiOffIcon />}
+        <span>{serviceItem.wifi ? 'Good WiFi' : 'Poor or No WiFi'}</span>
       </div>
     </div>
   );

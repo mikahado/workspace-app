@@ -73,6 +73,7 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
 
   const getLocation = (coords) => {
     setLocation(coords);
+    setCurrentPosition(coords)
     handleWorkspaceSubmit();
   };
 
@@ -103,7 +104,7 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
     <>
     <div>
       <br/>
-    {toggle ? <button className="workspace-lookup" onClick={() => getLocation(selectedPosition)}><h2>Add <br />{data?.address?.split(',')[0]}</h2></button> : null}
+    {toggle ? <button className="workspace-lookup" onClick={() => getLocation(selectedPosition)}><h3>Add {data?.address?.split(',')[0]}</h3></button> : null}
     </div>
     </>
 
@@ -129,6 +130,8 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
   //   navigator.geolocation.getCurrentPosition(success);
   // }, [])
 
+  console.log("position", currentPosition)
+
   const [libraries] = useState(["places"]);
 
   const { isLoaded } = useJsApiLoader({
@@ -147,9 +150,7 @@ const MapMain2 = ({ workspaces, addWorkspace, isAdding }) => {
           handleZoomMap={handleZoomMap}
         />
       </div>
-      <br/>
       {footer}
-      <br />
       {isLoaded && (
             <GoogleMap
               id="workspace-map"

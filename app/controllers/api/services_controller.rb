@@ -12,7 +12,7 @@ class Api::ServicesController < ApplicationController
     private 
 
     def service_params
-        params.require(:service).permit(:workspace_id, :category, :description)
+        params.require(:service).permit(:workspace_id, :category, :description, :wifi)
     end
 
 end

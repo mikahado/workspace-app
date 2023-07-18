@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import PlacesAutocomplete from './PlacesAutocomplete';
@@ -7,11 +7,11 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import MapMain2 from './MapMain2'
 import { NavLink, useNavigate  } from "react-router-dom";
 
-const WorkspaceAdd = ({onAddWorkspace}) => {
+const WorkspaceAdd = ({onAddWorkspace, addWorkspace}) => {
 
   const [data, setData] = useState({});
   const [ selected, setSelected ] = useState({});
-
+  const details = useRef(null)
     const navigate = useNavigate();
     // const [workspaceData, setWorkspaceData] = useState({
     //     title: "",
@@ -51,7 +51,6 @@ const WorkspaceAdd = ({onAddWorkspace}) => {
   return (
     <>
     <div>
-        <br/>
             <NavLink
               to="/workspaces"
               end

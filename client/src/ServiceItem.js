@@ -4,9 +4,9 @@ const ServiceItem = ({service}) => {
  
   return (
     <div>
-       <p>{service.kind_of_place}</p>
+       <p>{service.category}</p>
        <p>{service.description}</p>
-       <p>{service.has_wifi ? "Free WiFi" : "No WiFi"}</p>
+       <p>{service.wifi ? "Good WiFi" : "Poor or no WiFi"}</p>
     </div>
   )
 }

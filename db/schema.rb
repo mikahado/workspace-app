@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_16_210616) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_17_230716) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_16_210616) do
 
   create_table "services", force: :cascade do |t|
     t.string "category"
-    t.boolean "wifi"
+    t.boolean "wifi", default: true
     t.text "description"
     t.bigint "workspace_id", null: false
     t.datetime "created_at", null: false

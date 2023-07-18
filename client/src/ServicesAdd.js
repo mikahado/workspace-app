@@ -13,10 +13,10 @@ const ServiceAdd = ({ service, id, toggle, setWorkspace }) => {
         workspace_id: id,
         category: "",
         description: "",
-        has_wifi: null
+        wifi: true
         });  
 
-console.log(services.has_wifi)
+console.log(services.wifi)
 
     const [errors, setErrors] = useState([])
 
@@ -27,12 +27,17 @@ console.log(services.has_wifi)
 
   const addServices = () => {
 
+    const requestData = {
+      ...services,
+      wifi: Boolean(services.wifi) // Convert wifi to a boolean explicitly
+    };
+
     fetch(`/api/services`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(services),
+        body: JSON.stringify(requestData),
       })
         .then((resp) => resp.json())
         .then((data) => {
@@ -92,18 +97,20 @@ console.log(services.has_wifi)
 
           <FormControl fullWidth sx={{ width: "25ch", textAlign: "center" }} >
             <InputLabel id="demo-simple-select-label">Wifi</InputLabel>
+           
             <Select
   labelId="demo-simple-select-label"
   id="demo-simple-select"
-  value={services.has_wifi}
-  label="has_wifi"
+  value={services.wifi ? 'true' : 'false'}
+  label="wifi"
   onChange={(e) =>
-    setServices({ ...services, has_wifi: e.target.value }) // Update the "has_wifi" state
+    setServices({ ...services, wifi: e.target.value === 'true' })
   }
 >
-  <MenuItem value={true}>Good WiFi</MenuItem>
-  <MenuItem value={false}>Poor or no WiFi</MenuItem>
+  <MenuItem value={'true'}>Good WiFi</MenuItem>
+  <MenuItem value={'false'}>Poor or no WiFi</MenuItem>
 </Select>
+
 
           </FormControl>
         <br /><br/>

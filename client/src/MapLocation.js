@@ -1,81 +1,74 @@
-import { useState, useMemo, useRef, useEffect } from "react";
-import { GoogleMap, useJsApiLoader, InfoWindow, Marker, MarkerF } from "@react-google-maps/api";
-
+import React, { useState, useEffect } from "react";
+import { useLoadScript, GoogleMap, InfoWindow, Marker } from "@react-google-maps/api";
 import Button from '@mui/material/Button';
 
-// /*global google*/ 
+const libraries = ["places"];
+const mapContainerStyle = {
+  marginTop: "20px",
+  height: "60vh",
+  width: "100%"
+};
 
-const MapLocation = ({ workspaces, lat, lng }) => {
+const MapLocation = ({ title, lat, lng }) => {
+  const [currentPosition, setCurrentPosition] = useState({});
+  const [selected, setSelected] = useState(null);
+  const [map, setMap] = useState(null);
 
+  const handleMapLoad = (map) => {
+    setMap(map);
+  };
 
-  const [currentPosition, setCurrentPosition ] = useState({});
+  const handleMarkerClick = (event) => {
+    setSelected({ lat: event.latLng.lat(), lng: event.latLng.lng() });
+  };
 
- 
-  const mapStyles = () => ({
-        marginTop: "20px",
-        height: "60vh",
-        width: "100%"
-      })
-    
-//   useEffect(() => {
-//     navigator.geolocation.getCurrentPosition(success);
-//   }, [])
+  useEffect(() => {
+    if (selected) {
+      // Perform reverse geocoding or any other necessary actions
+    }
+  }, [selected]);
 
-  const { isLoaded } = useJsApiLoader({
+  const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-    libraries: ["places"],
+    libraries
   });
 
-     return (
-    <>     
+  if (loadError) {
+    return <div>Error loading Google Maps</div>;
+  }
 
-      {/* <LoadScript
-        id="script-loader"
-        googleMapsApiKey="AIzaSyB6iTD6vclUpZ-BnAazxNCQmddOFn_nphw"
-      > */}
-
-        {isLoaded && <GoogleMap
-          id='workspace-map'
-          mapContainerStyle={mapStyles()}
-          draggable={true}
-          zoom={18}
-          center={{lat, lng}}
-          options={{
-            disableDefaultUI: true,
-            tilt: 10
-          }}
+  return isLoaded ? (
+    <GoogleMap
+      id="workspace-map"
+      mapContainerStyle={mapContainerStyle}
+      draggable={true}
+      zoom={18}
+      center={{ lat, lng }}
+      options={{
+        disableDefaultUI: true,
+        tilt: 1
+      }}
+      onLoad={handleMapLoad}
+    >
+      <Marker
+        position={{ lat, lng }}
+        title="hehehe"
+        onClick={handleMarkerClick}
+      />
+      {selected && (
+        <InfoWindow
+          position={{ lat: selected.lat, lng: selected.lng }}
+          onCloseClick={() => setSelected(null)}
         >
+          <div>
+            <p>{title}</p>
+          </div>
+        </InfoWindow>
+      )}
+    </GoogleMap>
+  ) : (
+    <div>Loading...</div>
+  );
+};
 
-          {/* <MarkerF
-            position={{lat, lng}}
-            title="hehehe"
-              />         */}
-
-          {
-            // selected.location ?
-            // (
-            //   <InfoWindow
-            //   position={selected.location}
-            //   onCloseClick={() => setSelected({})}
-            // >
-            //   <div className="infowindow">
-            //     {/* <p>{selected.title}</p>
-            //     <img src={selected.image} className="small-image" alt="rental"/>
-            //     <p>price: {selected.price}</p>
-            //     <p>sqm2: {selected.sqm}</p>
-            //     <p>bedrooms: {selected.bedrooms}</p> */}
-            //   </div>
-            // </InfoWindow>
-            // ) : null
-          }
-
-        </GoogleMap>
-        }
-    </>
-     )
-}
-
-
-
-
-export default MapLocation
+export default MapLocation;

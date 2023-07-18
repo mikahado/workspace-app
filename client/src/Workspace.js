@@ -49,30 +49,13 @@ const Workspace = () => {
       });
   }, []);
 
-  // const handleDeleteReview = (id) => {
-  //   fetch(`/api/reviews/${id}`, {
-  //     method: "DELETE",
-  //   }).then(() => onReviewDelete(id));
-  // };
 
-  // const onReviewDelete = (id) => {
-  //   const updatedReviews = workspace.reviews.filter((w) => w.id !== id);
-  //   setWorkspace({ ...workspace, reviews: updatedReviews });
-  // };
 
   const handleAddReview = (newReview) => {
     setWorkspace({ ...workspace, reviews: [...workspace.reviews, newReview] });
   };
 
-  // const handleEditReview = (editedReview) => {
-  //   const updatedReviews = workspace.reviews.map((review) => {
-  //     if (review.id === editedReview.id) {
-  //       return editedReview;
-  //     }
-  //     return review;
-  //   });
-  //   setWorkspace({ ...workspace, reviews: updatedReviews });
-  // };
+
 
   const reviewItems = workspace?.reviews
   ?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
@@ -88,7 +71,7 @@ const Workspace = () => {
   ))
   ?.reverse();
 
-
+console.log(workspace.lat)
 
 
   const handleShowReviewClick = () => {
@@ -103,10 +86,10 @@ const Workspace = () => {
   if (workspace?.services?.length === 0) {
     return (
       <div>
-        <h1>≡🬀 {title} 🬀≡</h1>
+        <h2>≡ {title} ≡</h2>
         <br />
         <h3>This is a new Workspace!</h3>
-        <h3>This workspace needs details.</h3>
+        <h3>It needs details.</h3>
         <Button variant="outlined" onClick={handleInfoToggleClick}>
           Add Details
         </Button>
@@ -150,14 +133,14 @@ const Workspace = () => {
         <h2>≡ {title} ≡</h2>
         <h4>{workspace?.services[0]?.category}</h4>
         <div className="workspace-nav">
-        <Button variant="text" onClick={scrollToDetails}>
+        <Button variant="outlined" onClick={scrollToDetails}>
           Details
         </Button>   
-        <Button variant="text" onClick={scrollToReviews}>
+        <Button variant="outlined" onClick={scrollToReviews}>
           Reviews
         </Button>
         </div>
-        <MapLocation lat={workspace?.lat} lng={workspace?.lng} />
+        <MapLocation key={workspace.id} title={title} lat={workspace.lat} lng={workspace.lng} />
         <br />
         <br />
         <div ref={details}></div>
