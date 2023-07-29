@@ -16,7 +16,7 @@ const Workspace = () => {
     services: [],
   });
 
-  const { loggedIn } = useContext(UserContext)
+  const { loggedIn, addWorkspaceToFavorites } = useContext(UserContext)
   
   const navigate = useNavigate()
   const title = workspace?.title?.split(",")[0]
@@ -80,6 +80,10 @@ const Workspace = () => {
     setShowInfoForm(!showInfoForm);
   }
 
+  const handleSaveClick = () => {
+    addWorkspaceToFavorites(workspace.id)
+  }
+
   if (workspace?.services?.length === 0) {
     return (
       <div>
@@ -135,6 +139,9 @@ const Workspace = () => {
         </Button>   
         <Button variant="outlined" onClick={scrollToReviews}>
           Reviews
+        </Button>
+        <Button variant="outlined" onClick={handleSaveClick}>
+          Save
         </Button>
         </div>
         <MapLocation key={workspace.id} title={title} lat={workspace.lat} lng={workspace.lng} />

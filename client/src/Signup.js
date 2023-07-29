@@ -17,9 +17,12 @@ const Signup = () => {
     const navigate = useNavigate()
 
     const { signup } = useContext(UserContext)
+    console.log(password, passwordConfirmation)
 
     const handleSubmit = (e) => {
         e.preventDefault()
+
+
 
         fetch('/api/signup', {
             // CONFIG OBJECT

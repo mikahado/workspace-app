@@ -141,6 +141,39 @@ const UserProvider = ({ children }) => {
       });
   };
   
+  const addWorkspaceToFavorites = (workspace_id) => {
+    const updatedUser = {
+      favorites: [...user.favorites, workspace_id] // Add the new workspace_id to the existing favorites array
+    };
+  
+    // Use Rails' update method to send the PATCH request
+    fetch(`/api/ws_users/${user.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedUser),
+    })
+      .then((resp) => {
+        if (resp.ok) {
+          // Update the state to reflect the new favorites array directly
+          setUser((prevUser) => ({
+            ...prevUser,
+            favorites: [...prevUser.favorites, workspace_id],
+          }));
+          console.log(user)
+          alert("Workspace added to favorites successfully!");
+        } else {
+          // Handle errors if necessary
+          alert("Failed to add workspace to favorites.");
+        }
+      })
+      .catch((error) => {
+        console.log("Error updating user:", error);
+        alert("An error occurred while updating user.");
+      });
+  };
+  
 
 
   return (
@@ -159,7 +192,8 @@ const UserProvider = ({ children }) => {
         handleAuthClick,
         open,
         setOpen,
-        updateMyReview
+        updateMyReview,
+        addWorkspaceToFavorites
       }}
     >
       {children}
