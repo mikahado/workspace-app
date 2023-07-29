@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 
 import WorkspaceCard from "./WorkspaceCard";
 import Search from "./Search";
@@ -11,12 +11,11 @@ import Filter from "./Filter.js";
 
 import Button from "@mui/material/Button";
 
-const Workspaces = () => {
+const Favorites = () => {
 
-  const { workspaces } = useContext(UserContext)
+const { user, workspaces } = useContext(UserContext)
 
   const [search, setSearch] = useState("");
-  // eslint-disable-next-line
   const [showAddForm, setShowAddForm] = useState(false);
   const [filterToggle, setFilterToggle] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState("All");
@@ -31,9 +30,11 @@ const Workspaces = () => {
     searchBar.current.scrollIntoView({ behavior: 'smooth' })
   };
 
+  const favorites = workspaces?.filter((w) => user.favorites.includes(w.id))
 
+  console.log(favorites)
 
-  const filterBySearch = workspaces
+  const filterBySearch = favorites
     ?.filter((w) => w.title?.toLowerCase().includes(search.toLowerCase()))
     .filter((w) => {
       if (categoryFilter === "All") {
@@ -58,7 +59,7 @@ const Workspaces = () => {
   return (
     <div>
       <br /><br/>
-      <h1 className="home-title">WORKSPACES</h1>
+      <h1 className="home-title">FAVORITES</h1>
       <br/><br/>
       <Search handleSearchChange={handleSearchChange} />
 
@@ -71,4 +72,4 @@ const Workspaces = () => {
   );
 };
 
-export default Workspaces;
+export default Favorites;

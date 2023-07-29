@@ -20,7 +20,7 @@
   outline: 1px solid darkgray;
   filter: brightness(105%) saturate(120%);
   background-size: cover;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); */
 }
 
 
@@ -57,26 +57,22 @@
   justify-content: center;
 
   margin: 0 auto;  
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1),
-              0px 0px 20px 10px rgba(0, 0, 0, 0.08),
-              0px 0px 30px 15px rgba(0, 0, 0, 0.06),
-              0px 0px 40px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
 }
 
 .home-title {
   border-radius: 50px;
   width: 18rem;
-  background: white;
+  background: linear-gradient(135deg, #ffffff, #f0f0f0);
   text-align: center;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0 auto;  
-  box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.08),
-              0px 0px 12px 6px rgba(0, 0, 0, 0.06),
-              0px 0px 16px 8px rgba(0, 0, 0, 0.04);
-}
+  margin: 0 auto;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;}
+
+
 
 
 
@@ -195,10 +191,19 @@
 }
 
 .search-box {
-  border-radius: 5px;
-  box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.08),
-              0px 0px 12px 6px rgba(0, 0, 0, 0.06),
-              0px 0px 16px 8px rgba(0, 0, 0, 0.04);
+  box-shadow: 
+    -5px -5px 10px rgba(255, 255, 255, 0.8),
+    5px 5px 10px rgba(70, 70, 70, 0.08),
+    inset -5px -5px 10px rgba(255, 255, 255, 0.8),
+    inset 5px 5px 10px rgba(70, 70, 70, 0.08);
+}
+
+.ws-card-info {
+  padding: 5px;
+  margin: 0 auto;
+  text-align: left;
+  /* border: solid 1px #ccc; */
+
 }
 
 .review-container {
@@ -211,10 +216,7 @@
   flex-direction: column;
   justify-content: center;
   margin: 0 auto;  
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1),
-              0px 0px 20px 10px rgba(0, 0, 0, 0.08),
-              0px 0px 30px 15px rgba(0, 0, 0, 0.06),
-              0px 0px 40px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
 }
 
 .details-container {
@@ -228,10 +230,7 @@
   justify-content: center;
   align-items: center;
   margin: 0 auto;  
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1),
-              0px 0px 20px 10px rgba(0, 0, 0, 0.08),
-              0px 0px 30px 15px rgba(0, 0, 0, 0.06),
-              0px 0px 40px 20px rgba(0, 0, 0, 0.04);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
 }
 
 .titles {

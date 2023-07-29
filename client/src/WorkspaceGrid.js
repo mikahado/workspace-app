@@ -10,7 +10,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(2),
   textAlign: 'center',
   color: theme.palette.text.secondary,
-  boxShadow: '0px 0px 10px 5px rgba(0, 0, 0, 0.1), 0px 0px 20px 10px rgba(0, 0, 0, 0.08), 0px 0px 30px 15px rgba(0, 0, 0, 0.06), 0px 0px 40px 20px rgba(0, 0, 0, 0.04)',
+  boxShadow: 'rgba(0, 0, 0, 0.2) 0px 60px 40px -7px',
 }));
 
 
@@ -24,7 +24,7 @@ const WorkspaceGrid = ({ workspaceCard }) => {
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 2, sm: 8, md: 12 }}
         >
-          {workspaceCard.map((w, index) => (
+          {workspaceCard?.map((w, index) => (
             <Grid item xs={2} sm={4} md={4} key={index}>
               <Item w={`${w}`}>{w}</Item>
             </Grid>

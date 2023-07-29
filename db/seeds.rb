@@ -15,7 +15,7 @@ space_descriptions = ["A cozy, spacious atmosphere with table service.", "All-da
 WsUser.create(username: "Guest", password_digest: "password", email: 'haha@haha.com')
 WsUser.create(username: "Popo", password_digest: "passwords", email: 'hafa@haha.com')
 
-Workspace.create(title: "David Rubenstein Atrium", address: "61 W 62nd St, New York, NY 10023", lat: 40.77146086611695, lng: -73.98303895282801, media: "")
+Workspace.create(title: "David Rubenstein Atrium", address: "61 W 62nd St, New York, NY 10023", lat: 40.77146086611695, lng: -73.98303895282801)
 Workspace.create(title: "Empire Hotel", address: "44 W 63rd St., New York, NY 10023", lat: 40.77148524161229, lng: -73.982641985919)
 Workspace.create(title: "Bowery Road", address: "132 4th Ave, New York, NY 10003", lat: 40.73327024023306, lng: -73.99017402001607)
 # Workspace.create(title: "MUD Cafe", address: "307 E 9th St, New York, NY 10003")

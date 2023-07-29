@@ -5,7 +5,7 @@ const UserContext = React.createContext();
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
-
+  const [workspaces, setWorkspaces] = useState([]); // Add this state for workspaces
   const [allUsers, setAllUsers] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [errors, setErrors] = useState([]);
@@ -24,7 +24,9 @@ const UserProvider = ({ children }) => {
           setErrors([]);
         }
       });
+
     getAllUsers();
+    getWorkspaces(); // Fetch workspaces when the component mounts
   }, [loggedIn]);
 
   const getAllUsers = () => {
@@ -41,7 +43,16 @@ const UserProvider = ({ children }) => {
       });
   };
 
-  
+  const getWorkspaces = () => {
+    fetch("/api/workspaces") // Fetch workspaces data
+      .then((r) => r.json())
+      .then((data) => {
+        setWorkspaces(data);
+      })
+      .catch((error) => {
+        console.log("Error fetching workspaces:", error);
+      });
+  };
 
   const handleRemoveUser = (id) => {
     const updatedUsers = allUsers.filter((p) => p.id !== id);
@@ -143,10 +154,9 @@ const UserProvider = ({ children }) => {
   
   const addWorkspaceToFavorites = (workspace_id) => {
     const updatedUser = {
-      favorites: [...user.favorites, workspace_id] // Add the new workspace_id to the existing favorites array
+      favorites: [...user.favorites, workspace_id] 
     };
   
-    // Use Rails' update method to send the PATCH request
     fetch(`/api/ws_users/${user.id}`, {
       method: "PATCH",
       headers: {
@@ -161,7 +171,6 @@ const UserProvider = ({ children }) => {
             ...prevUser,
             favorites: [...prevUser.favorites, workspace_id],
           }));
-          console.log(user)
           alert("Workspace added to favorites successfully!");
         } else {
           // Handle errors if necessary
@@ -193,7 +202,8 @@ const UserProvider = ({ children }) => {
         open,
         setOpen,
         updateMyReview,
-        addWorkspaceToFavorites
+        addWorkspaceToFavorites,
+        workspaces
       }}
     >
       {children}

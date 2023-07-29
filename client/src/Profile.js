@@ -23,7 +23,7 @@ const Profile = () => {
         </Button>
       </NavLink>
       <br /><br />
-      <NavLink to="/workspaces" end>
+      <NavLink to="/favorites" end>
         <Button className="profile-buttons" variant="contained" startIcon={<BookmarkIcon />}>
           View Favorites
         </Button>

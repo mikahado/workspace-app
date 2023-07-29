@@ -9,6 +9,7 @@ import MapMain2 from './MapMain2'
 import AuthDialog from './AuthDialog';
 import Profile from './Profile'
 import ServicesAdd from './ServicesAdd'
+import Favorites from './Favorites'
 import './App.css';
 import ReviewsUserArchive from './ReviewsUserArchive'
 import { UserProvider } from "./context/user"
@@ -51,6 +52,10 @@ function App() {
 
           <Route path="/profile" 
             element={<Profile />} 
+            />    
+
+          <Route path="/favorites" 
+            element={<Favorites />} 
             />    
 
 <Route path="/myreviews" 

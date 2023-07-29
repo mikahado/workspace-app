@@ -25,24 +25,21 @@ const WorkspaceCard = ({ workspace }) => {
     <div>
       <Link to={`/workspaces/${workspace.id}`}>
         <h2>{title}</h2>
-        </Link>
-
  
         <img className='locationImage' src={`https://maps.googleapis.com/maps/api/staticmap?center=${workspace?.lat},${workspace?.lng}&zoom=17&size=400x400&maptype=roadmap&markers=${workspace?.lat},${workspace?.lng}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`} alt="Static Map"/>
-
+        </Link>
 
         <br/>
         {/* {address}<br /> */}
-        {service}
+        <div className="ws-card-info">{service}
 
-
-        
+      
         <Rating name="read-only" value={Math.ceil(ratingsAvg)} readOnly />
 
           <Link to={`/workspaces/${workspace.id}`}>
         <p>{allRatings?.length} reviews</p>
         </Link>
-        
+        </div>
     </div>
   )
 }
