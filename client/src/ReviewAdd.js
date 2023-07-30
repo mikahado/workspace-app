@@ -12,7 +12,7 @@ const ReviewAdd = ({
   workspace_id,
   onAddReview,
   scrollToBottom,
-  setShowReview,
+  showReview,
 }) => {
   const { user, onAddReviewToArchive } = useContext(UserContext);
 
@@ -44,6 +44,7 @@ const ReviewAdd = ({
       .then((newData) => {
         onAddReview(newData);
         onAddReviewToArchive(newData)
+        showReview(false);
       });
   };
 

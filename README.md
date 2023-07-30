@@ -41,10 +41,11 @@ npm start --prefix
 <a name="requirements"></a>
 ## Requirements
 
+- ReactJS
 - Ruby
 - Ruby on Rails
 - Postgresql
-- ReactJS
+
 
 <a name="background"></a>
 ## Background
@@ -70,6 +71,8 @@ Workspace features THOSE kinds of places.
 ## User Interaction
 
 The app allows anyone, even businesses, to add a workspace! Your suggestions go under a brief review, and we do have a cap per city -- only 1 workspace per 1000 people may be added! Of course, the BEST places don't always remain so for long. Each Workspace accepts a rating and user review.
+
+<img src="workspaces_app_preview.gif" alt="Example GIF" width="200">
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
