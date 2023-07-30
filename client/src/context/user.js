@@ -4,9 +4,12 @@ import { useNavigate } from "react-router-dom";
 const UserContext = React.createContext();
 
 const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({});
-  const [workspaces, setWorkspaces] = useState([]); // Add this state for workspaces
+  const [user, setUser] = useState({
+    reviews: [],
+  });
+  const [workspaces, setWorkspaces] = useState([]); 
   const [allUsers, setAllUsers] = useState([]);
+
   const [loggedIn, setLoggedIn] = useState(false);
   const [errors, setErrors] = useState([]);
   const [open, setOpen] = useState(false);
@@ -26,14 +29,14 @@ const UserProvider = ({ children }) => {
       });
 
     getAllUsers();
-    getWorkspaces(); // Fetch workspaces when the component mounts
+    getWorkspaces(); 
   }, [loggedIn]);
 
   const getAllUsers = () => {
     fetch("/api/ws_users")
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data)
+        console.log(data);
         if (data.errors) {
           const errorLis = data.errors.map((e) => <li>{e}</li>);
           setErrors(errorLis);
@@ -42,6 +45,7 @@ const UserProvider = ({ children }) => {
         }
       });
   };
+  
 
   const getWorkspaces = () => {
     fetch("/api/workspaces") // Fetch workspaces data
@@ -182,7 +186,16 @@ const UserProvider = ({ children }) => {
         alert("An error occurred while updating user.");
       });
   };
+
+
+  const onAddReviewToArchive = (newReview) => {
+    setUser((prevUser) => ({
+      ...prevUser,
+      reviews: [...prevUser.reviews, newReview],
+    }));
+  };
   
+
 
 
   return (
@@ -203,7 +216,8 @@ const UserProvider = ({ children }) => {
         setOpen,
         updateMyReview,
         addWorkspaceToFavorites,
-        workspaces
+        workspaces,
+        onAddReviewToArchive
       }}
     >
       {children}

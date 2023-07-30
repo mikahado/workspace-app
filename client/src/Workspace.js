@@ -16,7 +16,7 @@ const Workspace = () => {
     services: [],
   });
 
-  const { loggedIn, addWorkspaceToFavorites } = useContext(UserContext)
+  const { loggedIn, addWorkspaceToFavorites, onAddReview } = useContext(UserContext)
   
   const navigate = useNavigate()
   const title = workspace?.title?.split(",")[0]
@@ -48,23 +48,17 @@ const Workspace = () => {
         setWorkspace(data);
       });
   }, []);
-
-
-
+  
   const handleAddReview = (newReview) => {
     setWorkspace({ ...workspace, reviews: [...workspace.reviews, newReview] });
   };
 
-
-
   const reviewItems = workspace?.reviews
-  ?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-  ?.map((w) => (
+  .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+  .map((w) => (
     <div key={w.id} className="review-item">
       <ReviewItem
         review={w}
-        // onDeleteReview={handleDeleteReview}
-        // onEditReview={handleEditReview}
         workspace_id={workspace.id}
       />
     </div>
@@ -108,14 +102,14 @@ const Workspace = () => {
       </Button>
       <br />
       {showReview ? (
-        <ReviewAdd
-          key={workspace.id}
-          onAddReview={handleAddReview}
-          reviews={workspace?.reviews}
-          workspace_id={workspace.id}
-          showReview={handleShowReviewClick}
-        />
-      ) : null}
+  <ReviewAdd
+    key={workspace.id}
+    onAddReview={handleAddReview}
+    reviews={workspace?.reviews}
+    workspace_id={workspace.id}
+    setShowReview={handleShowReviewClick}
+  />
+) : null}
       {reviewItems}
 
     </div>
@@ -178,9 +172,6 @@ const Workspace = () => {
         {reviewItems}
         </div>    
         <br/>
-        {/* <Button onClick={handleWorkspaceDeleteClick} variant="outlined" color="error">
-        Delete Workspace
-      </Button> */}
       <br/> <br/> <br/> <br/>
        </div>
     );

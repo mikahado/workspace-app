@@ -6,25 +6,23 @@ import Box from "@mui/material/Box";
 import Rating from "@mui/material/Rating";
 import Typography from "@mui/material/Typography";
 
-import { UserContext } from "./context/user"
-
+import { UserContext } from "./context/user";
 
 const ReviewAdd = ({
-  onAddReview,
   workspace_id,
+  onAddReview,
   scrollToBottom,
-  showReview,
+  setShowReview,
 }) => {
+  const { user, onAddReviewToArchive } = useContext(UserContext);
 
-  const { user } = useContext(UserContext)
-
-   const [review, setReview] = useState({
+  const [review, setReview] = useState({
     ws_user_id: user.id,
     rating: 4,
     comment: "",
     workspace_id: workspace_id,
-  })
- 
+  });
+
   const handleReviewSubmit = (e) => {
     e.preventDefault();
 
@@ -34,8 +32,6 @@ const ReviewAdd = ({
       comment: review.comment,
       workspace_id: review.workspace_id,
     };
-
-    console.log(newReview)
 
     fetch("/api/reviews", {
       method: "POST",
@@ -47,7 +43,7 @@ const ReviewAdd = ({
       .then((r) => r.json())
       .then((newData) => {
         onAddReview(newData);
-        showReview(false);
+        onAddReviewToArchive(newData)
       });
   };
 
@@ -62,15 +58,15 @@ const ReviewAdd = ({
   return (
     <div className="App">
       <form onSubmit={handleReviewSubmit}>
-        <br/>
-      <Box
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 1, width: '25ch' },
-      }}
-      noValidate
-      autoComplete="off"
-    >
+        <br />
+        <Box
+          component="form"
+          sx={{
+            "& .MuiTextField-root": { m: 1, width: "25ch" },
+          }}
+          noValidate
+          autoComplete="off"
+        >
           <Typography component="legend">Your Rating</Typography>
           <Rating
             name="simple-controlled"
@@ -82,16 +78,15 @@ const ReviewAdd = ({
           <br />
           <br />
           <TextField
-          id="outlined-multiline-static"
-          label="Your Review"
-          onChange={handleChangeReview}
-          value={review.comment}
-          multiline
-          rows={4}
-          defaultValue="Default Value"
-          name="comment"
-        />
-        
+            id="outlined-multiline-static"
+            label="Your Review"
+            onChange={handleChangeReview}
+            value={review.comment}
+            multiline
+            rows={4}
+            defaultValue="Default Value"
+            name="comment"
+          />
         </Box>
 
         <br />
@@ -100,8 +95,8 @@ const ReviewAdd = ({
           Submit
         </Button>
       </form>
-      <br/>
-      <hr/>
+      <br />
+      <hr />
     </div>
   );
 };

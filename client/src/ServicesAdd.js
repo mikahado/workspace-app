@@ -91,6 +91,7 @@ console.log(services.wifi)
               <MenuItem value={"Museum"}>Museum</MenuItem>
               <MenuItem value={"Gym"}>Gym</MenuItem>
               <MenuItem value={"Bookstore"}>Bookstore</MenuItem>
+              <MenuItem value={"Other"}>Other</MenuItem>
             </Select>
           </FormControl>
           <br/><br/>

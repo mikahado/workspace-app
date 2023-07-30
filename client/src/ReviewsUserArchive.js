@@ -17,7 +17,7 @@ const ReviewsUserArchive = ({ onEditReview }) => {
 
   const reviewItems = user?.reviews?.map((review) => (
     <ReviewsUserItem key={review.id} review={review}/>
-  ));
+  )).reverse();
 
   const handleShowEditor = (id) => {
     setSelectedReviewId(id);

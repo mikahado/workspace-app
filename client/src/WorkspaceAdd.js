@@ -13,19 +13,6 @@ const WorkspaceAdd = ({onAddWorkspace, addWorkspace}) => {
   const [ selected, setSelected ] = useState({});
   const details = useRef(null)
     const navigate = useNavigate();
-    // const [workspaceData, setWorkspaceData] = useState({
-    //     title: "",
-    //     lat: "",
-    //     lng: "",
-    // })
-
-    // const handleChangeTitle = (e) => {
-    //     setWorkspaceData({...workspaceData, [e.target.name]: e.target.value})
-    // }
-
-    // const handleChangeAddress = (e) => {
-    //     setWorkspaceData({...workspaceData, [e.target.name]: e.target.value})
-    // }
 
     const handleAddSubmit = (newWorkspace) => {
 
@@ -60,7 +47,7 @@ const WorkspaceAdd = ({onAddWorkspace, addWorkspace}) => {
               </Button>
             </NavLink>
             <h2>Add a workspace.</h2>
-            <small>Type the name in the search bar. Check the map. Click add</small>
+            <small>Use the search bar to add a new workspace.</small>
  
     <MapMain2 addWorkspace={handleAddSubmit} data={data} selected={selected} />
     

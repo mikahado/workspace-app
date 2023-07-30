@@ -39,7 +39,7 @@ const Signup = () => {
         .then(user => {
             if (!user.errors) {
                 signup(user)
-                navigate('/')
+                navigate('/profile')
             } else {
                 setUsername("")
                 const errorLis = user.errors.map(e => <li>{e}</li>)

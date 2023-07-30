@@ -6,7 +6,7 @@ Workspace.destroy_all
 WsUser.destroy_all
 
 
-category = ["Cafe", "Hotel Lobby", "Privately Owned Public Space", "Library", "Resturaunt", "Diner", "Random Nook", "Museum"]
+category = ["Cafe", "Hotel Lobby", "Public Space", "Library", "Resturaunt", "Gym", "Other", "Museum", "Bar", "Coworking Space"]
 
 review_comments = ["Great stuff. It's as if heaven was here on earth!", "Is good ... I guess ... I think.", "My favorite place in the entire world!!!", "Nothin' special. But refills are free so that's cool.", "It's fine -- very OK. I would say it is remarkably middling.", "There are lots of hallways? Nothing else. I think I'm lost. Please help!", "Avoid this dump like the plague.", "This is my NEST. I can't give this place up. They have to kick me out every night. It's the best.", "Lovely decor but wayyy too many rats.", "Cute! But no bathrooms.", "I'm done. Please fix the giant hole in the ceiling.", "I basically finished my degree here. Anyone hiring?", "Cursed! I failed ALL my classes here.", "It feels like I'm spinning in place.", "Literally no tables! Why is it even on this amazing site? PLEASE DELETE!", "Super fancy, but super judgy. Who cares if I'm still running Windows 95? It's none of their business.", "Great!", "Good stuff.", "OK then.", "Pure bad.", "Ughghghgh! Why do I even try. Like most places, it smells like humans.", "NOPE!", "Hell yeah, I met my husband here.", "This is the place.", "Where even am I? Is this a place? How tho is it even?", "GET OUT. They're coming!", "Help, I'm locked in the bathroom!", "Whoaw I kind of love it."]
 
